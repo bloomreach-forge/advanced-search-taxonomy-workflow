@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" sv:name="collection-taxonomy">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>hipposys:workflowcategory</sv:value>
+  </sv:property>
+  <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
+    <sv:value>hippo:translated</sv:value>
+  </sv:property>
+  <sv:node sv:name="collections">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>frontend:workflow</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:classname" sv:type="String">
+      <sv:value>org.onehippo.forge.search.workflow.taxonomy.impl.CollectionTaxonomyWorkflowImpl</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:display" sv:type="String">
+      <sv:value>Collections workflow</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:nodetype" sv:type="String">
+      <sv:value>hippocollection:collection</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:privileges" sv:type="String" sv:multiple="true">
+      <sv:value>hippo:editor</sv:value>
+    </sv:property>
+    <sv:node sv:name="hipposys:types">
+      <sv:property sv:name="jcr:primaryType" sv:type="Name">
+        <sv:value>hipposys:types</sv:value>
+      </sv:property>
+    </sv:node>
+    <sv:node sv:name="frontend:renderer">
+      <sv:property sv:name="jcr:primaryType" sv:type="Name">
+        <sv:value>frontend:plugin</sv:value>
+      </sv:property>
+      <sv:property sv:name="plugin.class" sv:type="String">
+        <sv:value>org.onehippo.forge.search.workflow.taxonomy.frontend.CollectionTaxonomyWorkflowPlugin</sv:value>
+      </sv:property>
+      <sv:property sv:name="taxonomy.name" sv:type="String">
+        <sv:value></sv:value>
+      </sv:property>
+    </sv:node>
+  </sv:node>
+  <sv:node sv:name="hippo:translation">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hippo:translation</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:language" sv:type="String">
+      <sv:value>en</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:message" sv:type="String">
+      <sv:value>Taxonomy</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>

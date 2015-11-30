@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2014 Hippo
+
+    Licensed under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with the
+    License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software distributed
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for
+    the specific language governing permissions and limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Advanced Search Taxonomy Workflow Plugin</name>
+    <description>Advanced Search Taxonomy Workflow Plugin</description>
+    <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
+    <artifactId>taxonomy-bulkwf</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>http://taxonomy-bulkwf.forge.onehippo.org/</url>
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.javaVersion>1.7</project.build.javaVersion>
+
+        <jcr.version>2.0</jcr.version>
+        <hippo.repository.version>3.1.0</hippo.repository.version>
+        <hippo.cms.version>3.1.1</hippo.cms.version>
+        <hippo.plugin.taxonomy.version>2.1.0</hippo.plugin.taxonomy.version>
+        <hippo.addon-advanced-search.version>2.1.0</hippo.addon-advanced-search.version>
+
+        <lib.json-lib.version>2.4</lib.json-lib.version>
+        <lib.junit.version>4.8.2</lib.junit.version>
+        <lib.easymock.version>3.0</lib.easymock.version>
+        <lib.slf4j.version>1.7.6</lib.slf4j.version>
+        <lib.log4j.version>1.2.17</lib.log4j.version>
+
+        <plugin.compiler.version>3.1</plugin.compiler.version>
+        <plugin.clean.version>2.5</plugin.clean.version>
+        <plugin.deploy.version>2.8.1</plugin.deploy.version>
+        <plugin.install.version>2.5.1</plugin.install.version>
+        <plugin.jar.version>2.4</plugin.jar.version>
+        <plugin.javadoc.version>2.9.1</plugin.javadoc.version>
+        <plugin.jxr.version>2.3</plugin.jxr.version>
+        <plugin.pmd.version>3.1</plugin.pmd.version>
+        <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
+        <plugin.release.version>2.5</plugin.release.version>
+        <plugin.resources.version>2.6</plugin.resources.version>
+        <plugin.site.version>3.4</plugin.site.version>
+        <plugin.source.version>2.2.1</plugin.source.version>
+        <plugin.surefire.version>2.17</plugin.surefire.version>
+        <plugin.surefire-report.version>2.17</plugin.surefire-report.version>
+
+        <extension.wagon-svn.version>1.9</extension.wagon-svn.version>
+
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Charlie Chen</name>
+            <id>cchen</id>
+            <email>c dot chen at onehippo dot com</email>
+            <organization>Hippo</organization>
+            <roles>
+                <role>Project Lead</role>
+                <role>Java Developer</role>
+            </roles>
+            <timezone>-5</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</connection>
+        <developerConnection>scm:svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</developerConnection>
+        <url>https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</url>
+    </scm>
+
+    <issueManagement>
+        <url>http://forge.onehippo.org/projects/taxonomy-bulkwf</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Hudson</system>
+        <url>http://hudson.onehippo.org/job/Advanced%20Search%20Taxonomy%20Workflow%20Plugin%20Trunk/</url>
+    </ciManagement>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>taxonomy-bulkwf-maven-repo</id>
+            <url>svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>hippo</id>
+            <name>Hippo maven 2 repository.</name>
+            <url>http://maven.onehippo.com/maven2/</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>javax.jcr</groupId>
+                <artifactId>jcr</artifactId>
+                <version>${jcr.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-api</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-builtin</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-cms-api</artifactId>
+                <version>${hippo.cms.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-cms-builtin</artifactId>
+                <version>${hippo.cms.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${lib.slf4j.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-plugin-taxonomy-addon-frontend</artifactId>
+                <version>${hippo.plugin.taxonomy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-plugin-taxonomy-api</artifactId>
+                <version>${hippo.plugin.taxonomy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.onehippo.cms7</groupId>
+                <artifactId>hippo-addon-advanced-search-common</artifactId>
+                <version>${hippo.addon-advanced-search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.onehippo.cms7</groupId>
+                <artifactId>hippo-addon-advanced-search-frontend-api</artifactId>
+                <version>${hippo.addon-advanced-search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.onehippo.cms7</groupId>
+                <artifactId>hippo-addon-advanced-search-frontend-engine</artifactId>
+                <version>${hippo.addon-advanced-search.version}</version>
+            </dependency>
+
+            <!-- TEST DEPENDENCIES -->
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-cms-test</artifactId>
+                <version>${hippo.cms.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-cms-engine</artifactId>
+                <version>${hippo.cms.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-cms-editor-repository</artifactId>
+                <version>${hippo.cms.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-engine</artifactId>
+                <version>${hippo.repository.version}</version>
+                <classifier>tests</classifier>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-connector</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-config</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-provider</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-modules</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.onehippo.cms7</groupId>
+                <artifactId>hippo-repository-engine</artifactId>
+                <version>${hippo.repository.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${lib.slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${lib.slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${lib.log4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${lib.junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>${lib.easymock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${plugin.project-info-reports.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${plugin.jxr.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${plugin.pmd.version}</version>
+                <configuration>
+                    <linkXref>true</linkXref>
+                    <sourceEncoding>${project.build.sourceEncoding}
+                    </sourceEncoding>
+                    <targetJdk>${project.build.javaVersion}</targetJdk>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${plugin.javadoc.version}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <skip>false</skip>
+                    <aggregate>true</aggregate>
+                    <!--
+                    <destDir>userapidocs</destDir>
+                    -->
+                    <sourcepath>${basedir}/fieldpicker/src/main/java</sourcepath>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${plugin.surefire-report.version}</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <modules>
+        <module>frontend</module>
+        <module>repository</module>
+    </modules>
+
+    <build>
+
+        <defaultGoal>package</defaultGoal>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.compiler.version}</version>
+                <configuration>
+                    <source>${project.build.javaVersion}</source>
+                    <target>${project.build.javaVersion}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${plugin.clean.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${plugin.install.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${plugin.deploy.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${plugin.jar.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${plugin.surefire.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.resources.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${plugin.site.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${plugin.release.version}</version>
+                <configuration>
+                    <tagBase>https://forge.onehippo.org/svn/exdocpickerbase/taxonomy-bulkwf/tags/</tagBase>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${plugin.source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <extensions>
+            <extension>
+                <groupId>org.jvnet.wagon-svn</groupId>
+                <artifactId>wagon-svn</artifactId>
+                <version>${extension.wagon-svn.version}</version>
+            </extension>
+        </extensions>
+
+    </build>
+</project>
