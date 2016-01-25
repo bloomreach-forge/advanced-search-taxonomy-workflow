@@ -107,12 +107,12 @@
 
     <repositories>
         <repository>
-            <id>hippo</id>
+            <id>hippo-maven2</id>
             <name>Hippo maven 2 repository.</name>
             <url>http://maven.onehippo.com/maven2/</url>
         </repository>
         <repository>
-            <id>hippo-enterprise</id>
+            <id>hippo-maven2-enterprise</id>
             <name>Hippo Enterprise Maven 2</name>
             <url>https://maven.onehippo.com/maven2-enterprise</url>
         </repository>
