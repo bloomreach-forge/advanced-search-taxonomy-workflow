@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//Apache Software Foundation//DTD XDOC 1.0//EN" "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<!--
+  Copyright 2009-2014 Hippo
+
+  Licensed under the Apache License, Version 2.0 (the  "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS"
+  BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<document>
+  <properties>
+    <title>CMS Configuration</title>
+  </properties>
+  <body>
+    <section name="Configuration">
+      <p>This page describes how to add taxonomy workflow to advanced search perspective. In short, you need to take the following steps.</p>
+      <ul>
+        <li>Prerequisites: You must already have enabled taxonomy in one or more document types, 
+        and have set up a taxonomy category</li>
+        <li>Step 1: Set your taxonomy name to the <code>/hippo:configuration/hippo:workflows/collection-taxonomy/collections/frontend:renderer</code> configutation</li>
+        <li>Step 2: Add the 'collection-taxonomy' category to the <code>/hippo:configuration/hippo:frontend/cms/cms-advanced-search/workflowPlugin</code> configuration</li>        
+      </ul>
+
+      <subsection name="Step 0: Requirements">
+      	<p>Make sure you have enabled the <a href="http://www.onehippo.org/library/concepts/plugins/taxonomy/about.html">Taxonomy Plugin</a> and configured it correctly.</p>
+      	<p>Make sure you have enabled the <a href="http://www.onehippo.org/library/enterprise/enterprise-features/advanced-search/advanced-search.html">Advanced Search Perspective</a>.</p>
+        <p>Make sure you add the taxonomy workflow dependency in your cms project's pom.xml. If this is not the case see
+           the <a href="install.html">Installation page</a>.</p>
+      </subsection>
+      <subsection name="Step 1: Set your taxonomy category name in the plugin configuration">
+        <p>To be able to use this plugin you must first set your taxonomy's name in the configuration.
+        In this documentation we will use the taxonomy name 'Priority' that we already set up in the demo project.</p>
+        <ol>
+        	<li>Open your project's console, for example <a href="http://localhost:8080/cms/console">http://localhost:8080/cms/console</a></li>
+        	<li>Navigate to <code>/hippo:configuration/hippo:workflows/collection-taxonomy/collections/frontend:renderer</code> node, 
+        	and fill your taxonomy's name ('Priority' for example) in <code>taxonomy.name</code> property</li>
+        	<li>Don't forget to save your changes by clicking 'Write changes to repository' button!</li>
+        </ol>
+      </subsection>
+      <subsection name="Step 2: Add new workflow category to advanced search configuration">
+      	<p>To enable the taxonomy workflow in advanced search you need to add the new workflow category to its configuration</p>
+        <ol>
+        	<li>In your project's console, Navigate to <code>/hippo:configuration/hippo:frontend/cms/cms-advanced-search/workflowPlugin</code> node</li>
+        	<li><p>If the property <code>workflow.categories</code> does not allow multiple values, you will have to write down the current value, 
+        	delete the property and recreate it with 'Multi value' checkbox enabled, and then add the old value.</p>
+        		<img src="delete-property.png" alt="Screenshot deleting original property"/>
+        		<img src="add-multi-value.png" alt="Screenshot adding multi-valued property"/>
+        	</li>
+        	<li>Add a new value field to <code>workflow.categories</code> and fill in with the value 'collection-taxonomy'.</li>
+        	<li>Save your changes.</li>
+        </ol>        
+      </subsection>
+    </section>
+  </body>
+</document>

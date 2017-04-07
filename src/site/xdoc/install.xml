@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//Apache Software Foundation//DTD XDOC 1.0//EN" "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<!--
+  Copyright 2009-2014 Hippo
+
+  Licensed under the Apache License, Version 2.0 (the  "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS"
+  BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<document>
+    <properties>
+        <title>Installation</title>
+    </properties>
+    <body>
+        <section name="Obtaining the plugin via Maven repository">
+          <p>
+          The advanced search taxonomy workflow plugin is available via the Hippo Forge Maven repository. It's version is managed in the
+          Hippo release pom that your project normally used as parent.
+          </p>
+          <p>Make sure you have the forge Maven2 repository reference and dependency definition in the root pom.xml of your project.</p>
+          <div class="brush: xml">
+          <source>
+&lt;repositories&gt;
+ 
+  &lt;!-- SNIP --&gt;
+ 
+  &lt;repository&gt;
+    &lt;id&gt;hippo-maven2-forge&lt;/id&gt;
+    &lt;name&gt;Hippo Maven 2 Forge Repository&lt;/name&gt;
+    &lt;url&gt;http://maven.onehippo.com/maven2-forge/&lt;/url&gt;
+  &lt;/repository&gt;
+ 
+  &lt;!-- SNIP --&gt;
+ 
+&lt;/repositories&gt;
+ 
+&lt;!-- SNIP --&gt;
+ 
+&lt;dependencyManagement&gt;
+ 
+  &lt;!-- SNIP --&gt;
+ 
+  &lt;dependencies&gt;
+ 
+    &lt;!-- SNIP --&gt;
+ 
+    &lt;!-- NOTE: You should set a property named 'taxonomy-bulkwf.version' to a version of this plugin! --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.onehippo.forge.taxonomy-bulkwf&lt;/groupId&gt;
+      &lt;artifactId&gt;taxonomy-bulkwf-frontend&lt;/artifactId&gt;
+      &lt;version&gt;${taxonomy-bulkwf.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+ 
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.onehippo.forge.taxonomy-bulkwf&lt;/groupId&gt;
+      &lt;artifactId&gt;taxonomy-bulkwf-repository&lt;/artifactId&gt;
+      &lt;version&gt;${taxonomy-bulkwf.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+ 
+    &lt;!-- SNIP --&gt;
+ 
+  &lt;/dependencies&gt;
+ 
+  &lt;!-- SNIP --&gt;
+           
+          </source>
+          </div>
+          <p>Please add the taxonomy-bulkwf-frontend and taxonomy-bulkwf-repository dependencies to your project's CMS pom.xml.
+          </p>
+          <div class="brush: xml">
+          <source><![CDATA[
+<!-- Advanced Search Taxonomy Workflow plugin -->
+<dependency>
+  <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
+  <artifactId>taxonomy-bulkwf-frontend</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
+  <artifactId>taxonomy-bulkwf-repository</artifactId>
+</dependency>
+					]]></source>
+					</div>
+          <p><span class="note">Note:</span> if you want to add this to an existing repository, be sure to use startup option <code>-Drepo.bootstrap=true</code>
+            for initializing the types, see
+            <a href="http://www.onehippo.org/library/concepts/content-repository/content-bootstrap.html">Content Bootstrap</a></p>
+        </section>
+    </body>
+</document>

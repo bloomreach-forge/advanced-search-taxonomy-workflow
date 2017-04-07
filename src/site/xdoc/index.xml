@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//Apache Software Foundation//DTD XDOC 1.0//EN" "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<!--
+    Copyright 2009-2015 Hippo
+
+    Licensed under the Apache License, Version 2.0 (the  "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<document>
+  <properties>
+    <title>About</title>
+  </properties>
+  <body>
+    <section name="Advanced Search Taxonomy Workflow Plugin">
+      <div><p>Advanced Search Taxonomy Workflow plugin provides the cms users an ability to simultaneously set 
+      multiple documents with selected taxonomy categories using the Advanced Search perspective.</p>
+        <p>Assume that you already enabled taxonomy to one or more document types, and you have created a taxonomy.
+        Using advanced search, you can filter those documents you want to change, and set them altogether with your selected taxonomy categories.
+        </p>
+        <p>The CMS administrator can configure the taxonomy name to populate categories.</p>
+      </div>
+      <subsection name="Code base on GitHub">
+        <p>The code of this project is on GitHub at <a href="https://github.com/onehippo-forge/advanced-search-taxonomy-workflow/">https://github.com/onehippo-forge/advanced-search-taxonomy-workflow/</a>.</p>
+      </subsection>
+      <subsection name="Install instructions">
+        <p>
+          Instructions on how to obtain and install the plugin can be found on the
+          <a href="install.html">install page</a>.
+        </p>
+      </subsection>
+      <subsection name="Advanced Search Taxonomy Workflow Plugin in action">
+        <p>
+          You can build the <a href="build-demo.html">Demo Project</a> or check out the <a href="screenshots.html">screenshots</a>.
+        </p>
+      </subsection>
+
+      <subsection name="Compatibility Table">
+        <p>The latest version of the Content Blocks Plugin is compatible with Hippo 10.1.
+          See the <a href="release-notes.html">release notes</a> for details.</p>
+        <table border="1" cellpadding="0" cellspacing="5">
+          <tbody>
+            <tr>
+              <th>Version</th>
+              <th>Hippo CMS Suite</th>
+            </tr>
+            <tr>
+              <td>1.01.xx</td>
+              <td>10.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </subsection>
+    </section>
+  </body>
+</document>

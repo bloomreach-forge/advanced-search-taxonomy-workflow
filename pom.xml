@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright 2014 Hippo
+    Copyright 2014-2017 Hippo
 
     Licensed under the Apache License, Version 2.0
+
     (the "License"); you may not use this file except in compliance with the
     License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
     Unless required by applicable law or agreed to in writing, software distributed
@@ -19,7 +20,7 @@
     <artifactId>taxonomy-bulkwf</artifactId>
     <version>1.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <url>http://taxonomy-bulkwf.forge.onehippo.org/</url>
+    <url>https://github.com/onehippo-forge/advanced-search-taxonomy-workflow/</url>
 
     <properties>
 
@@ -70,7 +71,7 @@
         <developer>
             <name>Charlie Chen</name>
             <id>cchen</id>
-            <email>c dot chen at onehippo dot com</email>
+            <email>charlie dot chen at bloomreach dot com</email>
             <organization>Hippo</organization>
             <roles>
                 <role>Project Lead</role>
@@ -81,27 +82,29 @@
     </developers>
 
     <scm>
-        <connection>scm:svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</connection>
-        <developerConnection>scm:svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</developerConnection>
-        <url>https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/trunk</url>
+        <connection>scm:git:git@github.com:onehippo-forge/advanced-search-taxonomy-workflow.git</connection>
+        <developerConnection>scm:git:git@github.com:onehippo-forge/advanced-search-taxonomy-workflow.git</developerConnection>
+        <url>https://github.com/onehippo-forge/advanced-search-taxonomy-workflow.git</url>
+        <tag>HEAD</tag>
     </scm>
-
-    <issueManagement>
-        <url>http://forge.onehippo.org/projects/taxonomy-bulkwf</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>Hudson</system>
-        <url>http://hudson.onehippo.org/job/Advanced%20Search%20Taxonomy%20Workflow%20Plugin%20Trunk/</url>
-    </ciManagement>
 
     <distributionManagement>
         <repository>
+            <name>Hippo Maven 2 Forge Repository</name>
+            <id>hippo-maven2-forge</id>
+            <url>https://maven.onehippo.com/content/repositories/forge-releases/</url>
             <uniqueVersion>false</uniqueVersion>
-            <id>taxonomy-bulkwf-maven-repo</id>
-            <url>svn:https://forge.onehippo.org/svn/taxonomy-bulkwf/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <issueManagement>
+        <url>https://issues.onehippo.com/projects/HIPFORGE</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Travic CI</system>
+        <url>https://travis-ci.org/onehippo-forge/advanced-search-taxonomy-workflow</url>
+    </ciManagement>
 
     <repositories>
         <repository>
@@ -113,6 +116,11 @@
             <id>hippo-maven2-enterprise</id>
             <name>Hippo Enterprise Maven 2</name>
             <url>https://maven.onehippo.com/maven2-enterprise</url>
+        </repository>
+        <repository>
+            <id>hippo-maven2-forge</id>
+            <name>Hippo Forge Maven 2</name>
+            <url>https://maven.onehippo.com/maven2-forge</url>
         </repository>
     </repositories>
 
@@ -389,14 +397,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${plugin.site.version}</version>
+                <configuration>
+                    <outputDirectory>docs</outputDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${plugin.release.version}</version>
-                <configuration>
-                    <tagBase>https://forge.onehippo.org/svn/taxonomy-bulkwf/taxonomy-bulkwf/tags/</tagBase>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
