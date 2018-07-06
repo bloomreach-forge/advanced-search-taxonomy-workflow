@@ -18,9 +18,31 @@
 <document>
   <properties>
     <title>Release Notes</title>
+    <subtitle>Release Notes</subtitle>
   </properties>
   <body>
+    <section name="Compatibility">
+      <table>
+        <tr>
+          <th>Plugin version</th>
+          <th>Hippo CMS Release version</th>
+        </tr>
+        <tr>
+          <td>2.x</td>
+          <td>11.x</td>
+        </tr>
+        <tr>
+          <td>1.x</td>
+          <td>10.x</td>
+        </tr>
+      </table>
+    </section>
     <section name="Advanced Search Taxonomy Workflow Plugin Release Notes">
+      <subsection name="2.0.0">
+        <ul>
+          <li>Compatible with Hippo CMS 11.x.</li>
+        </ul>
+      </subsection>
       <subsection name="1.1.0">
         <ul>
           <li>Initial Release</li>

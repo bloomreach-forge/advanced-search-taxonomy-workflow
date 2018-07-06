@@ -45,7 +45,7 @@
     <easymock.version>3.5.1</easymock.version>
 
     <!-- documentation site -->
-    <plugin.site.version>3.6</plugin.site.version>
+    <maven.plugin.site.version>3.6</maven.plugin.site.version>
     <maven.doxia.markdown.version>1.7</maven.doxia.markdown.version>
 
     <maven.plugin.jxr.version>2.5</maven.plugin.jxr.version>
@@ -92,6 +92,7 @@
   </distributionManagement>
 
   <issueManagement>
+    <system>Jira</system>
     <url>https://issues.onehippo.com/projects/HIPFORGE</url>
   </issueManagement>
 
@@ -339,6 +340,18 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>${maven.plugin.site.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>${maven.doxia.markdown.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
