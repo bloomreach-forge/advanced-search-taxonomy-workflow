@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/onehippo-forge/advanced-search-taxonomy-workflow?branch=develop)](https://travis-ci.org/onehippo-forge/advanced-search-taxonomy-workflow)
 
 # Advanced Search Taxonomy Workflow Plugin
 
