@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?><sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:esv="http://www.onehippo.org/jcr/xmlimport" sv:name="hippo:registry" esv:merge="combine">
+  <sv:node sv:name="TaxonomyTranslatedUpdater" esv:merge="combine">
+    <sv:property sv:name="hipposys:dryrun" sv:type="Boolean" esv:merge="override">
+      <sv:value>false</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:parameters" sv:type="String" esv:merge="override">
+      <sv:value/>
+    </sv:property>
+    <sv:property sv:name="hipposys:batchsize" sv:type="Long" esv:merge="override">
+      <sv:value>10</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:throttle" sv:type="Long" esv:merge="override">
+      <sv:value>1000</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:query" sv:type="String" esv:merge="override">
+      <sv:value>//element(*, hippotaxonomy:taxonomy)</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:description" sv:type="String" esv:merge="override">
+      <sv:value>The taxonomy category localization model was based on deprecated hippo:translated and hippo:translation types and made use of same-name sibling nodes. This model has been changed to one that does not make use of same-name siblings and is not based on deprecated node types. This updater will migrate taxonomies to make use of the new taxonomy localization model. Run this updater after upgrading to Hippo 11.</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="MoveDocumentTypeTranslations" esv:merge="combine">
+    <sv:property sv:name="hipposys:dryrun" sv:type="Boolean" esv:merge="override">
+      <sv:value>false</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:parameters" sv:type="String" esv:merge="override">
+      <sv:value/>
+    </sv:property>
+    <sv:property sv:name="hipposys:batchsize" sv:type="Long" esv:merge="override">
+      <sv:value>10</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:throttle" sv:type="Long" esv:merge="override">
+      <sv:value>1000</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:query" sv:type="String" esv:merge="override">
+      <sv:value>/jcr:root/hippo:namespaces//element(*, hipposysedit:templatetype)</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:script" sv:type="String" esv:merge="override">
+      <sv:value>package org.hippoecm.frontend.plugins.cms.admin.updater&#13;
+      &#13;
+      import org.onehippo.repository.update.BaseNodeUpdateVisitor&#13;
+      import javax.jcr.Node&#13;
+      import org.hippoecm.repository.util.JcrUtils&#13;
+      import org.hippoecm.repository.util.NodeIterable&#13;
+      import org.apache.commons.lang.StringUtils&#13;
+      &#13;
+      &#13;
+      class UpdaterTemplate extends BaseNodeUpdateVisitor {&#13;
+      &#13;
+      static final String TYPES_TRANSLATIONS_PATH = "/hippo:configuration/hippo:translations/hippo:types";&#13;
+      static final String FIELD_TRANSLATIONS_PATH = "editor:templates/_default_/translator/hippostd:translations";&#13;
+      static final String NODE_TYPE_PATH = "hipposysedit:nodetype/hipposysedit:nodetype";&#13;
+      static final String FIELDS_PATH = "editor:templates/_default_";&#13;
+      static final Collection&lt;String&gt; SKIP_NAMESPACES = Arrays.asList("system", "hippo", "hippostd", "hippostdpubwf", "hipposysedit", "hippogallery", "hippogallerypicker", "hst", "selection", "seosupport", "resourcebundle");&#13;
+      &#13;
+      boolean doUpdate(Node node) {&#13;
+      String namespace = node.getParent().getName();&#13;
+      String docTypeName = namespace + ":" + node.getName();&#13;
+      if (SKIP_NAMESPACES.contains(namespace)) {&#13;
+      log.debug "skipping document type ${docTypeName}"&#13;
+      return;&#13;
+      }&#13;
+      boolean update = false;&#13;
+      log.debug "processing document type ${docTypeName}"&#13;
+      if (node.isNodeType("hippo:translated")) {&#13;
+      update = true;&#13;
+      moveDocumentTypeTranslations(node, docTypeName);&#13;
+      node.removeMixin("hippo:translated");&#13;
+      }&#13;
+      Node fieldTranslations = getFieldTranslations(node);&#13;
+      if (fieldTranslations != null) {&#13;
+      update = true;&#13;
+      Node nodeType = getNodeType(node);&#13;
+      moveDocumentFieldTranslations(fieldTranslations, namespace, docTypeName, nodeType);&#13;
+      fieldTranslations.getParent().remove();&#13;
+      removeTranslatorIds(node);&#13;
+      }&#13;
+      return update&#13;
+      }&#13;
+      &#13;
+      void moveDocumentFieldTranslations(final Node fieldTranslations, final String namespace, final String docTypeName, final Node nodeType) &#13;
+      throws RepositoryException {&#13;
+      Node typesTranslations = fieldTranslations.getSession().getNode(TYPES_TRANSLATIONS_PATH);&#13;
+      Node docTypeBundles = getOrCreateDocTypeResourceBundles(typesTranslations, docTypeName);&#13;
+      for (Node node : new NodeIterable(fieldTranslations.getNodes())) {&#13;
+      String oldKey = node.getName();&#13;
+      String newKey;&#13;
+      if (nodeType.hasNode(oldKey)) {&#13;
+      newKey = namespace + ":" + oldKey;&#13;
+      } else {&#13;
+      newKey = oldKey + "-" + UUID.randomUUID();&#13;
+      log.warn "no corresponding field found for translation key ${oldKey}. moving it to randomized key ${newKey}"&#13;
+      }&#13;
+      newKey = newKey.endsWith(".hint") ? newKey.replace(".hint", "#hint") : newKey;&#13;
+      for (Node translation : new NodeIterable(node.getNodes("hippo:translation"))) {&#13;
+      String language = translation.getProperty("hippo:language").getString();&#13;
+      String message = translation.getProperty("hippo:message").getString();&#13;
+      if (StringUtils.isNotEmpty(language)) {&#13;
+      Node bundle = getOrCreateResourceBundle(docTypeBundles, language);&#13;
+      bundle.setProperty(newKey, message);&#13;
+      }&#13;
+      }&#13;
+      }&#13;
+      }&#13;
+      &#13;
+      Node getFieldTranslations(final Node node) throws RepositoryException {&#13;
+      return JcrUtils.getNodeIfExists(node, FIELD_TRANSLATIONS_PATH);&#13;
+      }&#13;
+      &#13;
+      Node getNodeType(final Node node) throws RepositoryException {&#13;
+      return JcrUtils.getNodeIfExists(node, NODE_TYPE_PATH);&#13;
+      }&#13;
+      &#13;
+      void moveDocumentTypeTranslations(Node node, String docTypeName) throws RepositoryException {&#13;
+      for (Node translation : new NodeIterable(node.getNodes("hippo:translation"))) {&#13;
+      moveDocumentTypeTranslation(translation, docTypeName);&#13;
+      }&#13;
+      }&#13;
+      &#13;
+      void moveDocumentTypeTranslation(Node translation, String docTypeName) throws RepositoryException {&#13;
+      Node typesTranslations = translation.getSession().getNode(TYPES_TRANSLATIONS_PATH);&#13;
+      Node docTypeBundles = getOrCreateDocTypeResourceBundles(typesTranslations, docTypeName);&#13;
+      String language = translation.getProperty("hippo:language").getString();&#13;
+      String message = translation.getProperty("hippo:message").getString();&#13;
+      if (StringUtils.isNotEmpty(language)) {&#13;
+      Node docTypeBundle = getOrCreateResourceBundle(docTypeBundles, language);&#13;
+      docTypeBundle.setProperty("jcr:name", message);&#13;
+      }&#13;
+      }&#13;
+      &#13;
+      void removeTranslatorIds(Node node) {&#13;
+      Node fields = JcrUtils.getNodeIfExists(node, FIELDS_PATH);&#13;
+      if (fields != null) {&#13;
+      for (Node field : new NodeIterable(fields.getNodes())) {&#13;
+      if (field.hasProperty("translator.id")) {&#13;
+      field.getProperty("translator.id").remove()&#13;
+      }&#13;
+      }    &#13;
+      }&#13;
+      }&#13;
+      &#13;
+      Node getOrCreateDocTypeResourceBundles(Node typesTranslations, String docTypeName) throws RepositoryException {&#13;
+      if (typesTranslations.hasNode(docTypeName)) {&#13;
+      return typesTranslations.getNode(docTypeName);&#13;
+      } else {&#13;
+      return typesTranslations.addNode(docTypeName, "hipposys:resourcebundles");&#13;
+      }&#13;
+      }&#13;
+      &#13;
+      Node getOrCreateResourceBundle(Node bundles, String language) throws RepositoryException {&#13;
+      if (bundles.hasNode(language)) {&#13;
+      return bundles.getNode(language);&#13;
+      } else {&#13;
+      return bundles.addNode(language, "hipposys:resourcebundle");&#13;
+      }&#13;
+      }&#13;
+      &#13;
+      boolean undoUpdate(Node node) {&#13;
+      throw new UnsupportedOperationException('Updater does not implement undoUpdate method')&#13;
+      }&#13;
+      &#13;
+      }</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:description" sv:type="String" esv:merge="override">
+      <sv:value>Document type translations have been moved. Run this updater after upgrading to Hippo 11.</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="MoveTemplateTranslations" esv:merge="combine">
+    <sv:property sv:name="hipposys:dryrun" sv:type="Boolean">
+      <sv:value>false</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:parameters" sv:type="String">
+      <sv:value/>
+    </sv:property>
+    <sv:property sv:name="hipposys:batchsize" sv:type="Long" esv:merge="override">
+      <sv:value>10</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:throttle" sv:type="Long" esv:merge="override">
+      <sv:value>1000</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:query" sv:type="String" esv:merge="override">
+      <sv:value>/jcr:root/hippo:configuration/hippo:queries/hippo:templates/element(*, hippostd:templatequery)</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:script" sv:type="String" esv:merge="override">
+      <sv:value>package org.hippoecm.frontend.plugins.cms.admin.updater&#13;
+&#13;
+import org.onehippo.repository.update.BaseNodeUpdateVisitor&#13;
+import javax.jcr.Node&#13;
+import org.hippoecm.repository.util.NodeIterable&#13;
+&#13;
+class UpdaterTemplate extends BaseNodeUpdateVisitor {&#13;
+  &#13;
+  private Node templateBundles;&#13;
+  &#13;
+  public void initialize(Session session) throws RepositoryException {&#13;
+    templateBundles = session.getNode("/hippo:configuration/hippo:translations/hippo:templates");&#13;
+  }&#13;
+&#13;
+  boolean doUpdate(Node node) {&#13;
+    if (node.isNodeType("hippo:translated")) {&#13;
+      final String templateName = node.getName();&#13;
+      log.info "Moving translations of template ${templateName}"&#13;
+      for (Node translation : new NodeIterable(node.getNodes("hippo:translation"))) {&#13;
+        final String language = translation.getProperty("hippo:language").getString();&#13;
+        final String message = translation.getProperty("hippo:message").getString();&#13;
+        final Node templateBundle = getOrCreateTemplateResourceBundle(language);&#13;
+        templateBundle.setProperty(templateName, message);&#13;
+        translation.remove();&#13;
+      }&#13;
+      node.removeMixin("hippo:translated");&#13;
+      return true;&#13;
+    }&#13;
+    return false&#13;
+  }&#13;
+  &#13;
+  Node getOrCreateTemplateResourceBundle(String language) {&#13;
+    if (templateBundles.hasNode(language)) {&#13;
+      return templateBundles.getNode(language);&#13;
+    } else {&#13;
+      return templateBundles.addNode(language, "hipposys:resourcebundle");&#13;
+    }&#13;
+  }&#13;
+&#13;
+  boolean undoUpdate(Node node) {&#13;
+    throw new UnsupportedOperationException('Updater does not implement undoUpdate method')&#13;
+  }&#13;
+&#13;
+}</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:description" sv:type="String" esv:merge="override">
+      <sv:value>Translations of template queries have been moved. Run this updater after upgrading to Hippo 11.</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="HippoTranslationToDisplayName" esv:merge="combine">
+    <sv:property sv:name="hipposys:dryrun" sv:type="Boolean" esv:merge="override">
+      <sv:value>false</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:parameters" sv:type="String" esv:merge="override">
+      <sv:value/>
+    </sv:property>
+    <sv:property sv:name="hipposys:batchsize" sv:type="Long" esv:merge="override">
+      <sv:value>100</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:throttle" sv:type="Long" esv:merge="override">
+      <sv:value>100</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:query" sv:type="String" esv:merge="override">
+      <sv:value>//element(*, hippo:translated)</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:script" sv:type="String" esv:merge="override">
+      <sv:value>package org.hippoecm.frontend.plugins.cms.admin.updater&#13;
+&#13;
+import org.onehippo.repository.update.BaseNodeUpdateVisitor&#13;
+import javax.jcr.Node&#13;
+import org.hippoecm.repository.util.NodeIterable&#13;
+import java.util.Locale;&#13;
+&#13;
+class UpdaterTemplate extends BaseNodeUpdateVisitor {&#13;
+&#13;
+  boolean doUpdate(Node node) {&#13;
+    if (node.isNodeType("hippostd:folder") || node.isNodeType("hippostd:directory") || node.isNodeType("hippo:handle")) {&#13;
+      String language = findLanguage(node);&#13;
+      String displayName = findTranslation(node, language);&#13;
+      if (displayName != null) {&#13;
+        setDisplayName(node, displayName)&#13;
+      }&#13;
+      removeTranslations(node);&#13;
+      return true;&#13;
+    }&#13;
+    return false&#13;
+  }&#13;
+&#13;
+  String findLanguage(Node node) {&#13;
+    if (node.isNodeType("hippotranslation:translated")) {&#13;
+      return node.getProperty("hippotranslation:locale").getString();&#13;
+    }&#13;
+    if (node.getPath().equals("/")) {&#13;
+      return null;&#13;
+    }&#13;
+    return findLanguage(node.getParent())&#13;
+  }&#13;
+  &#13;
+  String findTranslation(Node node, String nodeLanguage) {&#13;
+    String defaultLanguage = Locale.getDefault().getLanguage();&#13;
+    String emptyLanguageName = null, nodeLanguageName = null, defaultLanguageName = null;&#13;
+    for (Node translation : new NodeIterable(node.getNodes("hippo:translation"))) {&#13;
+      String language = translation.getProperty("hippo:language").getString();&#13;
+      String message = translation.getProperty("hippo:message").getString();&#13;
+      if (emptyLanguageName == null &amp;&amp; language.isEmpty()) {&#13;
+        emptyLanguageName = message;&#13;
+      }&#13;
+      if (nodeLanguageName == null &amp;&amp; language.equals(nodeLanguage)) {&#13;
+        nodeLanguageName = message;&#13;
+      }&#13;
+      if (defaultLanguageName == null &amp;&amp; language.equals(defaultLanguage)) {&#13;
+        defaultLanguageName = message;&#13;
+      }&#13;
+    }&#13;
+    return emptyLanguageName != null ? emptyLanguageName : nodeLanguageName != null ? nodeLanguageName : defaultLanguageName;&#13;
+  }&#13;
+  &#13;
+  void setDisplayName(Node node, String displayName) {&#13;
+    node.addMixin("hippo:named");&#13;
+    node.setProperty("hippo:name", displayName)&#13;
+  }&#13;
+  &#13;
+  void removeTranslations(Node node) {&#13;
+    for (Node translation : new NodeIterable(node.getNodes("hippo:translation"))) {&#13;
+      translation.remove();&#13;
+    }&#13;
+    node.removeMixin("hippo:translated")&#13;
+  }&#13;
+  &#13;
+  boolean undoUpdate(Node node) {&#13;
+    throw new UnsupportedOperationException('Updater does not implement undoUpdate method')&#13;
+  }&#13;
+&#13;
+}</sv:value>
+    </sv:property>
+    <sv:property sv:name="hipposys:description" sv:type="String" esv:merge="override">
+      <sv:value>Changes the way display names of documents and folders are stored from the old model based on hippo:translated node type to the new model based on hippo:named node type. Run this updater after upgrading to Hippo 11.</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>
