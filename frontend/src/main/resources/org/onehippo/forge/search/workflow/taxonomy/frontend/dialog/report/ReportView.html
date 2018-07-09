@@ -1,0 +1,25 @@
+<!--
+  Copyright 2012-2013 Hippo B.V. (http://www.onehippo.com)
+-->
+<html xmlns:wicket="http://wicket.apache.org/">
+<wicket:panel>
+    <wicket:container wicket:id="report"></wicket:container>
+</wicket:panel>
+<wicket:fragment wicket:id="success">
+    <table class="hippo-window-form hippo-advanced-search">
+        <tr>
+            <td style="text-align: center;">
+                <span class="message" wicket:id="message">Successfully published documents</span>
+            </td>
+        </tr>
+    </table>
+</wicket:fragment>
+<wicket:fragment wicket:id="errors">
+    <div class="hippo-advanced-search-report">
+        <div class="warning"><span wicket:id="message">Some errors occurred</span>:</div>
+        <div class="hippo-advanced-search-report-listing">
+            <table class="hippo-list-documents" wicket:id="failed"></table>
+        </div>
+    </div>
+</wicket:fragment>
+</html>

@@ -15,4 +15,5 @@
     <templateLanguage>freemarker</templateLanguage>
     <useSamples>true</useSamples>
     <webfilesSubModule>webfiles</webfilesSubModule>
+    <selectedProjectPackage>org.onehippo.forge.search.workflow.taxonomy.demo</selectedProjectPackage>
 </project>

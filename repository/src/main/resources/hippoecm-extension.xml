@@ -9,13 +9,38 @@
       <sv:value>hippo:initializeitem</sv:value>
     </sv:property>
     <sv:property sv:name="hippo:sequence" sv:type="Double">
-      <sv:value>30000.3</sv:value>
+      <sv:value>20000.1</sv:value>
     </sv:property>
     <sv:property sv:name="hippo:contentresource" sv:type="String">
       <sv:value>configuration/workflows/collection-taxonomy.xml</sv:value>
     </sv:property>
     <sv:property sv:name="hippo:contentroot" sv:type="String">
       <sv:value>/hippo:configuration/hippo:workflows</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="hippo-configuration-cms-advanced-search-workflowPlugin-add-workflow-categories">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hippo:initializeitem</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:sequence" sv:type="Double">
+      <sv:value>20000.3</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:contentroot" sv:type="String">
+      <sv:value>/hippo:configuration/hippo:frontend/cms/cms-advanced-search/workflowPlugin/workflow.categories</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:contentpropadd" sv:type="String">
+      <sv:value>collection-taxonomy</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="hippo-configuration-hippo-workflows-collection-taxonomy-translations">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hippo:initializeitem</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:sequence" sv:type="Double">
+      <sv:value>20000.1</sv:value>
+    </sv:property>
+    <sv:property sv:name="hippo:resourcebundles" sv:type="String">
+      <sv:value>translations.json</sv:value>
     </sv:property>
   </sv:node>
 </sv:node>
