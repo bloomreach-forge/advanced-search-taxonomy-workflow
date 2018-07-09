@@ -53,8 +53,12 @@
               <th>Hippo CMS Suite</th>
             </tr>
             <tr>
-              <td>1.01.xx</td>
-              <td>10.1</td>
+              <td>2.x</td>
+              <td>11.x</td>
+            </tr>
+            <tr>
+              <td>1.x</td>
+              <td>10.1+</td>
             </tr>
           </tbody>
         </table>

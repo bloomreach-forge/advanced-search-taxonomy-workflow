@@ -6,6 +6,16 @@ import com.onehippo.cms7.search.state.Failure;
 import com.onehippo.cms7.search.state.Report;
 import com.onehippo.cms7.search.workflow.CollectionWorkflowReasons;
 import com.onehippo.cms7.search.workflow.ReportWorkflow;
+
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.util.List;
+import java.util.Map;
+import javax.jcr.ItemNotFoundException;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+
 import org.hippoecm.repository.api.Document;
 import org.hippoecm.repository.api.Workflow;
 import org.hippoecm.repository.api.WorkflowContext;
@@ -14,21 +24,15 @@ import org.hippoecm.repository.ext.InternalWorkflow;
 import org.hippoecm.repository.ext.WorkflowImpl;
 import org.onehippo.forge.search.workflow.taxonomy.CollectionTaxonomyWorkflow;
 import org.onehippo.repository.documentworkflow.DocumentWorkflow;
-import org.onehippo.taxonomy.api.TaxonomyNodeTypes;
 import org.onehippo.taxonomy.plugin.model.Classification;
-import org.onehippo.taxonomy.plugin.model.JcrHelper;
+import org.onehippo.taxonomy.plugin.model.ClassificationDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jcr.ItemNotFoundException;
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import java.rmi.RemoteException;
-import java.util.List;
-
 /**
  * Created by charliechen on 11/12/15.
+ *
+ * Last edited July 5, 2018.
  */
 public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
         implements CollectionTaxonomyWorkflow, InternalWorkflow {
@@ -54,7 +58,8 @@ public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
 
 
     @Override
-    public void setTaxonomy(Classification classification) throws WorkflowException, RepositoryException, RemoteException {
+    public void setTaxonomy(List<String> taxonomyKeys, ClassificationDao dao)
+            throws WorkflowException, RepositoryException, RemoteException {
         final WorkflowContext context = getWorkflowContext();
 
         ReportWorkflow reportWorkflow =
@@ -82,16 +87,19 @@ public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
                             context.getWorkflow("default", new Document(handle));
                     if (workflow instanceof DocumentWorkflow) {
                         DocumentWorkflow documentWorkflow = (DocumentWorkflow) workflow;
-                        if (setTaxonomyToDocument(documentWorkflow, classification, handle.getPath())) {
+                        Failure failure = setTaxonomyToDocument(documentWorkflow, taxonomyKeys, handle, dao);
+                        if (failure == null) {
                             succeeded++;
                         } else {
-                            report.addFailure(new Failure(handle, CollectionWorkflowReasons.WORKFLOW_FAILED));
+                            report.addFailure(failure);
                         }
                     } else {
                         report.addFailure(new Failure(handle, CollectionWorkflowReasons.INVALID_WORKFLOW));
                     }
                 } catch (ItemNotFoundException e) {
                     report.addFailure(new Failure(null, CollectionWorkflowReasons.DOCUMENT_NOT_FOUND));
+                } catch (RepositoryException e) {
+                    report.addFailure(new Failure(null, CollectionWorkflowReasons.WORKFLOW_FAILED));
                 } finally {
                     report.setNumberOfProcessedDocuments(executed);
                     session.save();
@@ -105,30 +113,48 @@ public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
         }
     }
 
-    private boolean setTaxonomyToDocument(DocumentWorkflow workflow, Classification classification, String handlePath) {
+    private Failure setTaxonomyToDocument(DocumentWorkflow workflow, List<String> keys, Node handle, ClassificationDao dao)
+            throws RepositoryException {
         try {
             final Document document = workflow.obtainEditableInstance();
             final Node editableNode = document.getNode(session);
 
-            if (JcrHelper.isNodeType(editableNode, TaxonomyNodeTypes.NODETYPE_HIPPOTAXONOMY_CLASSIFIABLE)) {
-                List<String> keys = classification.getKeys();
-                editableNode.setProperty("hippotaxonomy:keys", keys.toArray(new String[keys.size()]));
-                if (JcrHelper.isNodeType(editableNode, TaxonomyNodeTypes.NODETYPE_HIPPOTAXONOMY_CANONISED)) {
-                    String canonKey = classification.getCanonical();
-                    // when null, save empty string because it is mandatory at JCR level (see hippotaxonomy.cnd)
-                    editableNode.setProperty(TaxonomyNodeTypes.HIPPOTAXONOMY_CANONICALKEY, (canonKey == null) ? "" : canonKey);
-                }
+            if (dao != null) {
+                Classification classification = dao.getClassification(editableNode);
+                classification.getKeys().clear();
+                classification.getKeys().addAll(keys);
+                dao.save(classification);
                 session.save();
                 workflow.commitEditableInstance();
-                return true;
+                return null;
             }
 
-            log.info("Unable to set taxonomy: Not a classifiable document at {}", handlePath);
-            return false;
+            log.warn("Unable to set taxonomy: service class {} not found", ClassificationDao.class.getName());
+            return new Failure(handle, CollectionWorkflowReasons.INVALID_STATE);
+        } catch (IllegalStateException e) {
+            log.warn("Unable to set taxonomy: Not a classifiable document at {}", handle.getPath());
+            return new Failure(handle, CollectionWorkflowReasons.INVALID_WORKFLOW);
         } catch (Exception e) {
-            log.error("Failed to execute workflow on document at {}",
-                    handlePath, e);
-            return false;
+            log.error("Failed to execute workflow on document at {}", handle.getPath(), e);
+            return new Failure(handle, CollectionWorkflowReasons.WORKFLOW_FAILED);
         }
+    }
+
+    @Override
+    public Map<String, Serializable> hints() throws WorkflowException {
+        Map<String, Serializable> hints = super.hints();
+        hints.put("setTaxonomies", canStart());
+        return hints;
+    }
+
+    private boolean canStart() {
+        if (state.getWorkflowPhase() == CollectionState.Phase.INITIALIZED) {
+            return true;
+        }
+        if (state.getWorkflowPhase() == CollectionState.Phase.COMPLETE) {
+            Report report = state.getReport();
+            return !report.hasFailures();
+        }
+        return false;
     }
 }
