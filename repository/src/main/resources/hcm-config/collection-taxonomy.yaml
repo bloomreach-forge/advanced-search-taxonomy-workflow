@@ -1,0 +1,16 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:workflows/collection-taxonomy:
+      jcr:primaryType: hipposys:workflowcategory
+      /collections:
+        jcr:primaryType: frontend:workflow
+        hipposys:classname: org.onehippo.forge.search.workflow.taxonomy.impl.CollectionTaxonomyWorkflowImpl
+        hipposys:display: Collections workflow
+        hipposys:nodetype: hippocollection:collection
+        hipposys:privileges: ['hippo:editor']
+        /hipposys:types:
+          jcr:primaryType: hipposys:types
+        /frontend:renderer:
+          jcr:primaryType: frontend:plugin
+          plugin.class: org.onehippo.forge.search.workflow.taxonomy.frontend.CollectionTaxonomyWorkflowPlugin
+          taxonomy.name: ''

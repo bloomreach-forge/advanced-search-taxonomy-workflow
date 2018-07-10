@@ -3,7 +3,8 @@ package org.onehippo.forge.search.workflow.taxonomy.frontend.dialog;
 import com.onehippo.cms7.search.frontend.ICollectionManager;
 import com.onehippo.cms7.search.frontend.workflow.ButtonBarContainer;
 import com.onehippo.cms7.search.frontend.workflow.ButtonBarStep;
-import com.onehippo.cms7.search.frontend.workflow.ProgressStep;
+
+import java.util.Locale;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -24,10 +25,15 @@ import org.hippoecm.frontend.plugin.config.IPluginConfig;
 import org.hippoecm.frontend.service.IBrowseService;
 import org.onehippo.taxonomy.plugin.model.Classification;
 
+/**
+ * Created by charliechen on July 6, 2018.
+ *
+ * Last edited on July 9, 2018.
+ */
 public class BulkWorkflowWizard extends Wizard<Classification> {
     private MarkupContainer buttonBar;
 
-    public BulkWorkflowWizard(IPluginContext context, IPluginConfig config, IModel<Classification> model, String preferredLocale,
+    public BulkWorkflowWizard(IPluginContext context, IPluginConfig config, IModel<Classification> model, Locale preferredLocale,
             IWorkflowInvoker invoker, ICollectionManager collectionManager, final IBrowseService browseService) {
         super(model);
 

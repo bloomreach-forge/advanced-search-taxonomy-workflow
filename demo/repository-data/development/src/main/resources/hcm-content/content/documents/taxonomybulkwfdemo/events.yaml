@@ -1,0 +1,146 @@
+/content/documents/taxonomybulkwfdemo/events:
+  .meta:order-before: news
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+  jcr:uuid: 208046b0-7710-48be-8a1a-bb4aefa65a77
+  hippostd:foldertype: [new-events-document, new-events-folder]
+  hippotranslation:id: b7bdf891-43f7-4492-869f-63f57533d724
+  hippotranslation:locale: en
+  /2015:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+    jcr:uuid: e9a1d6bf-3eaa-4ee4-bcaf-35eb81e76f22
+    hippostd:foldertype: [new-events-document, new-events-folder]
+    hippotranslation:id: 3b692f1a-39f8-4355-b0b8-6e4c640e6dfd
+    hippotranslation:locale: en
+    /11:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 0a68cd1f-8e52-4287-abce-7ad0298f8ea4
+      hippostd:foldertype: [new-events-document, new-events-folder]
+      hippotranslation:id: 33df1717-a3f6-4a39-952e-1b629b4b705d
+      hippotranslation:locale: en
+      /breakfast:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:uuid: b8f5eb45-7200-452a-b26e-3118a0dc60b8
+        hippo:name: Breakfast
+        /breakfast:
+          jcr:primaryType: taxonomybulkwfdemo:eventsdocument
+          jcr:mixinTypes: ['mix:referenceable', 'hippotaxonomy:classifiable']
+          jcr:uuid: 1d970828-b1f3-4ea1-af9e-74feb0c4a175
+          hippo:availability: [live, preview]
+          hippostd:holder: admin
+          hippostd:state: published
+          hippostdpubwf:createdBy: admin
+          hippostdpubwf:creationDate: 2013-11-12T11:00:00+01:00
+          hippostdpubwf:lastModificationDate: 2013-11-12T11:11:00+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2013-11-12T12:16:00+01:00
+          hippotranslation:id: b1d5e8bb-2214-4142-8a54-0ecca997318e
+          hippotranslation:locale: en
+          taxonomybulkwfdemo:date: 2013-11-12T08:00:00+01:00
+          taxonomybulkwfdemo:documenttype: event
+          taxonomybulkwfdemo:enddate: 2016-11-24T12:05:00-05:00
+          taxonomybulkwfdemo:introduction: Start the day with a nice breakfast.
+          taxonomybulkwfdemo:location: Room 101
+          taxonomybulkwfdemo:title: Breakfast
+          /taxonomybulkwfdemo:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <html>
+                        <body>
+
+                        <p>Breakfast is served starting from 8:00 until 9:30.</p>
+
+                        </body>
+                        </html>
+          /taxonomybulkwfdemo:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: c8f03498-56eb-46c9-83b2-cf014f2e03d7
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /introduction-speech:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:uuid: 18e36c35-429d-4fee-b76e-eeabcbfc08bb
+        hippo:name: Introduction speech
+        /introduction-speech:
+          jcr:primaryType: taxonomybulkwfdemo:eventsdocument
+          jcr:mixinTypes: ['mix:referenceable', 'hippotaxonomy:classifiable']
+          jcr:uuid: 599a0d72-e416-4f1e-9bfa-6899933cb325
+          hippo:availability: [live, preview]
+          hippostd:holder: admin
+          hippostd:state: published
+          hippostdpubwf:createdBy: admin
+          hippostdpubwf:creationDate: 2013-11-12T11:02:00+01:00
+          hippostdpubwf:lastModificationDate: 2013-11-12T11:16:00+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2013-11-12T12:16:00+01:00
+          hippotranslation:id: 8ff5734f-5b91-451d-8c5a-a9f404d9780e
+          hippotranslation:locale: en
+          taxonomybulkwfdemo:date: 2013-11-12T10:00:00+01:00
+          taxonomybulkwfdemo:documenttype: event
+          taxonomybulkwfdemo:enddate: 2016-11-24T12:05:00-05:00
+          taxonomybulkwfdemo:introduction: After breakfast there will be an introductory
+            speech.
+          taxonomybulkwfdemo:location: Room 400
+          taxonomybulkwfdemo:title: Introduction speech
+          /taxonomybulkwfdemo:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <html>
+                        <body>
+
+                        <p>Speech will be about the workshop.</p>
+
+                        </body>
+                        </html>
+          /taxonomybulkwfdemo:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: 9f32434e-84e3-4150-a6f2-d89a67be2fb1
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /workshop:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 7a29ec60-2689-48b2-aca2-49696c5c23eb
+        /workshop:
+          jcr:primaryType: taxonomybulkwfdemo:eventsdocument
+          jcr:mixinTypes: ['mix:referenceable', 'hippotaxonomy:classifiable']
+          jcr:uuid: 93d7adad-f05a-4a7a-8e51-11b45f2bc0c3
+          hippo:availability: [live, preview]
+          hippostd:holder: admin
+          hippostd:state: published
+          hippostdpubwf:createdBy: admin
+          hippostdpubwf:creationDate: 2013-11-12T11:16:00+01:00
+          hippostdpubwf:lastModificationDate: 2013-11-12T11:18:00+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2013-11-12T12:16:00+01:00
+          hippotranslation:id: 8f2972dc-0c8d-40b0-9047-42df9d6f5c5a
+          hippotranslation:locale: en
+          taxonomybulkwfdemo:date: 2013-11-12T13:00:00+01:00
+          taxonomybulkwfdemo:documenttype: event
+          taxonomybulkwfdemo:enddate: 2016-11-24T12:05:00-05:00
+          taxonomybulkwfdemo:introduction: Workshop starts at 1:00
+          taxonomybulkwfdemo:location: Room 600
+          taxonomybulkwfdemo:title: Workshop
+          /taxonomybulkwfdemo:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <html>
+                        <body>
+                        <strong>Everybody </strong>
+                        <p>can join the workshop and start practicing what they learned during the last
+                        week.</p>
+
+                        </body>
+                        </html>
+          /taxonomybulkwfdemo:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: d035387b-f9ce-49f6-bcb0-9ab6915a2d5f
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []

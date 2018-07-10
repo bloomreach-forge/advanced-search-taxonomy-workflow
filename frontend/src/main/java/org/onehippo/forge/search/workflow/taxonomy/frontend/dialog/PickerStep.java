@@ -2,6 +2,8 @@ package org.onehippo.forge.search.workflow.taxonomy.frontend.dialog;
 
 import com.onehippo.cms7.search.frontend.workflow.ButtonBarStep;
 
+import java.util.Locale;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -21,6 +23,11 @@ import org.onehippo.taxonomy.plugin.model.TaxonomyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Created by charliechen on July 6, 2018.
+ *
+ * Last edited on July 9, 2018.
+ */
 public class PickerStep extends ButtonBarStep {
 
     private static final Logger log = LoggerFactory.getLogger(PickerStep.class);
@@ -33,7 +40,7 @@ public class PickerStep extends ButtonBarStep {
     protected Panel browser;
 
     public PickerStep(IPluginContext context, IPluginConfig config, IModel<Classification> model,
-            String preferredLocale, IWorkflowInvoker invoker) {
+            Locale preferredLocale, IWorkflowInvoker invoker) {
         ITreeNodeIconProvider iconProvider = FolderTreePlugin.newTreeNodeIconProvider(context, config);
 
         add(browser = new TaxonomyBrowser("content", new Model<>(model.getObject()),

@@ -1,0 +1,23 @@
+<!--
+  Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
+-->
+<html xmlns:wicket="http://wicket.apache.org/">
+<wicket:panel>
+    <table class="hippo-window-form hippo-advanced-search">
+        <tr>
+            <td>
+                <wicket:message key="progress-bar-label"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="progress" wicket:id="workflowProgress"/>
+            </td>
+        </tr>
+    </table>
+    <wicket:fragment wicket:id="buttons">
+        <input type="button" wicket:id="background" value="Run in Background" wicket:message="value:background"
+               class="hippo-button"/>
+    </wicket:fragment>
+</wicket:panel>
+</html>

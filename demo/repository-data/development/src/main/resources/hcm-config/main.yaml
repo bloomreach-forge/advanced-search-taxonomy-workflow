@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /content/taxonomies:
+      .meta:category: content

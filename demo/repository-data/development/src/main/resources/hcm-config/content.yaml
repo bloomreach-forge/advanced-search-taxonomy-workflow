@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /content:
+      /documents:
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        hippo:name: Documents
+      /gallery:
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        hippo:name: Images
+      /assets:
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        hippo:name: Assets

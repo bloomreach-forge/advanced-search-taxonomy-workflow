@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:workflows:
+      /en:
+        collection-taxonomy: Taxonomy

@@ -1,0 +1,200 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:types/taxonomybulkwfdemo:eventsdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Event
+        taxonomybulkwfdemo:content: Inhalt
+        taxonomybulkwfdemo:date: Startdatum
+        taxonomybulkwfdemo:enddate: Enddatum
+        taxonomybulkwfdemo:image: Abbildung
+        taxonomybulkwfdemo:introduction: Einführung
+        taxonomybulkwfdemo:location: Standort
+        taxonomybulkwfdemo:title: Titel
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Event
+        taxonomybulkwfdemo:content: Content
+        taxonomybulkwfdemo:date: Start date
+        taxonomybulkwfdemo:enddate: End date
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:location: Location
+        taxonomybulkwfdemo:title: Title
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Événement
+        taxonomybulkwfdemo:content: Contenu
+        taxonomybulkwfdemo:date: Date de début
+        taxonomybulkwfdemo:enddate: Date de fin
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:location: Lieu
+        taxonomybulkwfdemo:title: Titre
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Event
+        taxonomybulkwfdemo:content: Inhoud
+        taxonomybulkwfdemo:date: Startdatum
+        taxonomybulkwfdemo:enddate: Einddatum
+        taxonomybulkwfdemo:image: Afbeelding
+        taxonomybulkwfdemo:introduction: Introductie
+        taxonomybulkwfdemo:location: Locatie
+        taxonomybulkwfdemo:title: Titel
+    /hippo:configuration/hippo:translations/hippo:types/taxonomybulkwfdemo:bannerdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Banner
+        taxonomybulkwfdemo:content: Inhalt
+        taxonomybulkwfdemo:image: Abbildung
+        taxonomybulkwfdemo:link: Link
+        taxonomybulkwfdemo:title: Titel
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Banner
+        taxonomybulkwfdemo:content: Content
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:link: Link
+        taxonomybulkwfdemo:title: Title
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Bannière
+        taxonomybulkwfdemo:content: Contenu
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:link: Lien
+        taxonomybulkwfdemo:title: Titre
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Banner
+        taxonomybulkwfdemo:content: Inhoud
+        taxonomybulkwfdemo:image: Afbeelding
+        taxonomybulkwfdemo:link: Link
+        taxonomybulkwfdemo:title: Titel
+    /hippo:configuration/hippo:translations/hippo:types/taxonomybulkwfdemo:newsdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: News
+        taxonomybulkwfdemo:author: Verfasser
+        taxonomybulkwfdemo:content: Inhalt
+        taxonomybulkwfdemo:date: Datum
+        taxonomybulkwfdemo:image: Abbildung
+        taxonomybulkwfdemo:introduction: Einführung
+        taxonomybulkwfdemo:location: Standort
+        taxonomybulkwfdemo:source: Quelle
+        taxonomybulkwfdemo:title: Titel
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: News Item
+        taxonomybulkwfdemo:author: Author
+        taxonomybulkwfdemo:content: Content
+        taxonomybulkwfdemo:date: Date
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:location: Location
+        taxonomybulkwfdemo:source: Source
+        taxonomybulkwfdemo:title: Title
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Message d'info
+        taxonomybulkwfdemo:author: Auteur
+        taxonomybulkwfdemo:content: Contenu
+        taxonomybulkwfdemo:date: Date
+        taxonomybulkwfdemo:image: Image
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:location: Lieu
+        taxonomybulkwfdemo:source: Source
+        taxonomybulkwfdemo:title: Titre
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Nieuwsbericht
+        taxonomybulkwfdemo:author: Auteur
+        taxonomybulkwfdemo:content: Inhoud
+        taxonomybulkwfdemo:date: Datum
+        taxonomybulkwfdemo:image: Afbeelding
+        taxonomybulkwfdemo:introduction: Introductie
+        taxonomybulkwfdemo:location: Locatie
+        taxonomybulkwfdemo:source: Bron
+        taxonomybulkwfdemo:title: Titel
+    /hippo:configuration/hippo:translations/hippo:types/taxonomybulkwfdemo:contentdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Einfaches Dokument
+        taxonomybulkwfdemo:content: Inhalt
+        taxonomybulkwfdemo:introduction: Einführung
+        taxonomybulkwfdemo:publicationdate: Publikationsdatum
+        taxonomybulkwfdemo:title: Titel
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Simple Document
+        taxonomybulkwfdemo:content: Content
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:publicationdate: Publication date
+        taxonomybulkwfdemo:title: Title
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Document simple
+        taxonomybulkwfdemo:content: Contenu
+        taxonomybulkwfdemo:introduction: Introduction
+        taxonomybulkwfdemo:publicationdate: Date de publication
+        taxonomybulkwfdemo:title: Titre
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Eenvoudig Document
+        taxonomybulkwfdemo:content: Inhoud
+        taxonomybulkwfdemo:introduction: Introductie
+        taxonomybulkwfdemo:publicationdate: Publicatiedatum
+        taxonomybulkwfdemo:title: Titel
+    /hippo:configuration/hippo:translations/hippo:templates:
+      jcr:primaryType: hipposys:resourcebundles
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        new-banner-document: Neues Banner
+        new-banner-folder: Neuer Banner-Ordner
+        new-content-document: Neues Content-Document
+        new-content-folder: Neuer Content-Ordner
+        new-events-document: Neues Event
+        new-events-folder: Neuer Events-Ordner
+        new-news-document: Neue News
+        new-news-folder: Neuer News-Ordner
+        new-resource-bundle: Neues Resource-Bundle
+        new-untranslated-folder: Neuer nicht übersetzter Ordner
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        new-banner-document: new banner document
+        new-banner-folder: new banner folder
+        new-content-document: new content document
+        new-content-folder: new content folder
+        new-events-document: new event
+        new-events-folder: new events folder
+        new-news-document: new news item
+        new-news-folder: new news folder
+        new-resource-bundle: new resource bundle
+        new-untranslated-folder: new untranslated folder
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        new-banner-document: nouvelle bannière
+        new-banner-folder: nouveau dossier bannière
+        new-content-document: nouveau document contenu
+        new-content-folder: nouveau dossier contenu
+        new-events-document: nouvel événement
+        new-events-folder: dossier nouveau événements
+        new-news-document: nouveau message d'info
+        new-news-folder: nouveau dossier messages d'info
+        new-resource-bundle: nouveau resource bundle
+        new-untranslated-folder: nouveau dossier non traduit
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        new-banner-document: nieuw banner
+        new-banner-folder: nieuwe banner map
+        new-content-document: nieuw content document
+        new-content-folder: nieuwe content map
+        new-events-document: nieuw event
+        new-events-folder: nieuwe eventsmap
+        new-news-document: nieuw nieuwsbericht
+        new-news-folder: nieuwe nieuwsmap
+        new-resource-bundle: nieuwe resource bundle
+        new-untranslated-folder: nieuwe onvertaalde map
