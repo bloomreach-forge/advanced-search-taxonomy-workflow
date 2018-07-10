@@ -35,6 +35,9 @@ import org.hippoecm.frontend.skin.DocumentListColumn;
 import org.hippoecm.frontend.util.DocumentUtils;
 import org.onehippo.forge.search.workflow.taxonomy.frontend.dialog.ReportStep;
 
+/**
+ * Created by charliechen on July 6, 2018.
+ */
 public class ReportView extends Panel {
 
     private static final String REPORT_CONTAINER_ID = "report";

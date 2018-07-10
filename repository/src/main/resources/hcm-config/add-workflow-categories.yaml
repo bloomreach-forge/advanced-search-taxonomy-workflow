@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:frontend/cms/cms-advanced-search/workflowPlugin:
+      workflow.categories:
+        operation: add
+        value: ['collection-taxonomy']

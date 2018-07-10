@@ -51,8 +51,7 @@ public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
     public CollectionTaxonomyWorkflowImpl(Session userSession, Session rootSession, Node subject)
             throws RemoteException, RepositoryException {
         this.session = rootSession;
-        this.subject =
-                rootSession.getNodeByIdentifier(subject.getIdentifier());
+        this.subject = rootSession.getNodeByIdentifier(subject.getIdentifier());
         this.state = new CollectionState(this.subject);
     }
 

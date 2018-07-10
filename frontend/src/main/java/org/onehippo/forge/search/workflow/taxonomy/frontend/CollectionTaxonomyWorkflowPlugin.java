@@ -15,7 +15,6 @@ import org.apache.wicket.model.*;
 import org.hippoecm.addon.workflow.MenuDescription;
 import org.hippoecm.addon.workflow.StdWorkflow;
 import org.hippoecm.addon.workflow.WorkflowDescriptorModel;
-import org.hippoecm.frontend.dialog.AbstractDialog;
 import org.hippoecm.frontend.dialog.IDialogService;
 import org.hippoecm.frontend.plugin.IPluginContext;
 import org.hippoecm.frontend.plugin.config.IPluginConfig;
@@ -37,7 +36,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by charliechen on 11/10/15.
  *
- * Last edited on July 6, 2018.
+ * Last edited on July 9, 2018.
  */
 public class CollectionTaxonomyWorkflowPlugin extends RenderPlugin {
     private static Logger log = LoggerFactory.getLogger(CollectionTaxonomyWorkflowPlugin.class);
@@ -70,13 +69,6 @@ public class CollectionTaxonomyWorkflowPlugin extends RenderPlugin {
         }
 
         return service.getTaxonomy(taxonomyName);
-    }
-
-    /**
-     * Returns the translation locale of the document if exists. Otherwise, returns the user's UI locale as a fallback.
-     */
-    private String getPreferredLocale() {
-        return getLocale().getLanguage();
     }
 
     private class TaxonomyModel extends Model<Classification> {
@@ -160,7 +152,7 @@ public class CollectionTaxonomyWorkflowPlugin extends RenderPlugin {
 
         @Override
         protected IDialogService.Dialog createRequestDialog() {
-            wizard = new BulkWorkflowWizard(context, config, new TaxonomyModel(), getPreferredLocale(), this, collectionManager, browseService);
+            wizard = new BulkWorkflowWizard(context, config, new TaxonomyModel(), getLocale(), this, collectionManager, browseService);
             return wizard;
         }
 
