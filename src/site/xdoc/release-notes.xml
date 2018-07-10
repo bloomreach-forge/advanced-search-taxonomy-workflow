@@ -28,6 +28,10 @@
           <th>Hippo CMS Release version</th>
         </tr>
         <tr>
+          <td>3.x</td>
+          <td>12.x</td>
+        </tr>
+        <tr>
           <td>2.x</td>
           <td>11.x</td>
         </tr>
@@ -38,6 +42,11 @@
       </table>
     </section>
     <section name="Advanced Search Taxonomy Workflow Plugin Release Notes">
+      <subsection name="3.0.0">
+        <ul>
+          <li>Compatible with Hippo CMS 12.x.</li>
+        </ul>
+      </subsection>
       <subsection name="2.0.0">
         <ul>
           <li>Compatible with Hippo CMS 11.x.</li>
