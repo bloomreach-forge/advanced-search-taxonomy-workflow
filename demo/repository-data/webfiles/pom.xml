@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
     <artifactId>taxonomy-bulkwf-demo-repository-data</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
   </parent>
 
   <name>Advanced Search Taxonomy Workflow Plugin Demo Repository Data for Web Files</name>
