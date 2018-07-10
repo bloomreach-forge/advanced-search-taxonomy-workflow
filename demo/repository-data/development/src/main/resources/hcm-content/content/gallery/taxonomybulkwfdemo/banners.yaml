@@ -1,0 +1,65 @@
+/content/gallery/taxonomybulkwfdemo/banners:
+  .meta:order-before: samples
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['mix:referenceable']
+  jcr:uuid: 310e1cd0-aa0f-4e2c-a703-31e501f8ea09
+  hippostd:foldertype: [new-image-folder]
+  hippostd:gallerytype: ['hippogallery:imageset']
+  /banner-1.png:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: b89d576f-680a-4bbf-9c27-2dced9da3d6c
+    /banner-1.png:
+      jcr:primaryType: hippogallery:imageset
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8a3e7f6d-220e-472e-b6f1-7cf68d48902a
+      hippo:availability: [live, preview]
+      hippogallery:description: Description for banner-1.png
+      hippogallery:filename: banner-1.png
+      /hippogallery:thumbnail:
+        jcr:primaryType: hippogallery:image
+        hippogallery:height: 21
+        hippogallery:width: 60
+        jcr:data:
+          type: binary
+          resource: /content/gallery/taxonomybulkwfdemo/banners/banner-1.png/banner-1_thumbnail.png
+        jcr:lastModified: 2014-03-20T17:03:00+01:00
+        jcr:mimeType: image/png
+      /hippogallery:original:
+        jcr:primaryType: hippogallery:image
+        hippogallery:height: 250
+        hippogallery:width: 700
+        jcr:data:
+          type: binary
+          resource: /content/gallery/taxonomybulkwfdemo/banners/banner-1.png/banner-1_original.png
+        jcr:lastModified: 2014-03-20T17:03:00+01:00
+        jcr:mimeType: image/png
+  /banner2.png:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: db5907cc-e507-460e-b54d-de5d5c784e0a
+    /banner2.png:
+      jcr:primaryType: hippogallery:imageset
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: badbdbb4-3d4d-4e48-9b85-5b7943ff88f1
+      hippo:availability: [live, preview]
+      hippogallery:description: Description for banner2.png
+      hippogallery:filename: banner2.png
+      /hippogallery:thumbnail:
+        jcr:primaryType: hippogallery:image
+        hippogallery:height: 21
+        hippogallery:width: 60
+        jcr:data:
+          type: binary
+          resource: /content/gallery/taxonomybulkwfdemo/banners/banner2.png/banner2_thumbnail.png
+        jcr:lastModified: 2014-03-22T17:09:00+01:00
+        jcr:mimeType: image/png
+      /hippogallery:original:
+        jcr:primaryType: hippogallery:image
+        hippogallery:height: 250
+        hippogallery:width: 700
+        jcr:data:
+          type: binary
+          resource: /content/gallery/taxonomybulkwfdemo/banners/banner2.png/banner2_original.png
+        jcr:lastModified: 2014-03-22T17:09:00+01:00
+        jcr:mimeType: image/png

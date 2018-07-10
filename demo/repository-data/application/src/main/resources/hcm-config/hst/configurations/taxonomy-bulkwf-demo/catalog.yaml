@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/taxonomybulkwfdemo/hst:catalog:
+      jcr:primaryType: hst:catalog
+      /taxonomybulkwfdemo-catalog:
+        jcr:primaryType: hst:containeritempackage

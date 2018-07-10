@@ -1,0 +1,21 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/hst:default/hst:templates:
+      /essentials-carousel:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/essentials-carousel.ftl
+      /essentials-menu:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/essentials-menu.ftl
+      /essentials-banner:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/essentials-banner.ftl
+      /contentpage-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/contentpage-main.ftl
+      /newslist-main-newslist:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/newslist-main-newslist.ftl
+      /eventslist-main-eventslist:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/hstdefault/eventslist-main-eventslist.ftl

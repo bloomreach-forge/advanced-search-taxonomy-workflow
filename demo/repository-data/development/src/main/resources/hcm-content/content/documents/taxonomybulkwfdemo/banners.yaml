@@ -1,0 +1,85 @@
+/content/documents/taxonomybulkwfdemo/banners:
+  .meta:order-before: content
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+  jcr:uuid: 1a71e168-1167-4902-bb5a-6dcf6b2f121a
+  hippostd:foldertype: [new-banner-document, new-banner-folder]
+  hippotranslation:id: b94e95f1-b3dc-4b9b-ae7d-f415cf746f0c
+  hippotranslation:locale: en
+  /banner1:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 895fb1b6-410d-4972-9894-6b6a06d2b361
+    /banner1:
+      jcr:primaryType: taxonomybulkwfdemo:bannerdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 73ce43dc-f17b-44a1-8d4d-dc40bd22eb34
+      hippo:availability: [live, preview]
+      hippostd:holder: admin
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-03-20T17:00:00+01:00
+      hippostdpubwf:lastModificationDate: 2014-03-20T17:04:00+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2014-03-20T17:04:00+01:00
+      hippotranslation:id: 1bbfc7ff-cfbe-4807-8a8a-e811c9a780a5
+      hippotranslation:locale: en
+      taxonomybulkwfdemo:title: Sample banner
+      /taxonomybulkwfdemo:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+                    <body>
+
+                    <p>Banner description</p>
+
+                    </body>
+                    </html>
+      /taxonomybulkwfdemo:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: b89d576f-680a-4bbf-9c27-2dced9da3d6c
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /taxonomybulkwfdemo:link:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+  /banner2:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 9a3f1f5c-5302-43c4-9bec-584e810ffa2f
+    hippo:name: banner2
+    /banner2:
+      jcr:primaryType: taxonomybulkwfdemo:bannerdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: c3b26d60-af68-4f7a-a03b-756912c399b0
+      hippo:availability: [live, preview]
+      hippostd:holder: admin
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-03-20T17:00:00+01:00
+      hippostdpubwf:lastModificationDate: 2014-03-20T17:04:00+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2014-03-20T17:04:00+01:00
+      hippotranslation:id: ac682169-70c4-416c-9e9a-517bd6cad48c
+      hippotranslation:locale: en
+      taxonomybulkwfdemo:title: Sample banner 2
+      /taxonomybulkwfdemo:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+                    <body>
+
+                    <p>Banner description</p>
+
+                    </body>
+                    </html>
+      /taxonomybulkwfdemo:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: db5907cc-e507-460e-b54d-de5d5c784e0a
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /taxonomybulkwfdemo:link:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
