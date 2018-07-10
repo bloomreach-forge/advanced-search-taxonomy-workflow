@@ -5,14 +5,14 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>11.2.7</version>
+    <version>12.4.0</version>
   </parent>
 
   <name>Advanced Search Taxonomy Workflow Plugin Demo</name>
   <description>Advanced Search Taxonomy Workflow Plugin Demo</description>
   <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
   <artifactId>taxonomy-bulkwf-demo</artifactId>
-  <version>2.0.0</version>
+  <version>3.0.0</version>
   <packaging>pom</packaging>
 
   <!-- 
@@ -51,19 +51,20 @@
     <!--***START temporary override of versions*** -->
     <!-- ***END temporary override of versions*** -->
 
-    <forge.taxonomy-bulkwf.version>2.0.0</forge.taxonomy-bulkwf.version>
-    <essentials.version>3.2.4</essentials.version>
+    <forge.taxonomy-bulkwf.version>3.0.0-SNAPSHOT</forge.taxonomy-bulkwf.version>
+    <essentials.version>4.4.0-1</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.1</taglibs.version>
-    <xalan.version>2.7.1</xalan.version>
-    <junit.version>4.10</junit.version>
-    <easymock.version>3.1</easymock.version>
+    <taglibs.version>1.2.5</taglibs.version>
+    <xalan.version>2.7.2</xalan.version>
+    <junit.version>4.12</junit.version>
+    <easymock.version>3.4</easymock.version>
      
     <filesync.override>false</filesync.override>
     <maven.plugins.filesync.version>1.0.0</maven.plugins.filesync.version>
     <repo.bootstrap>true</repo.bootstrap>
 
     <!-- other properties -->
+    <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
     <hippo.cms.locales>nl,fr,de</hippo.cms.locales>
   </properties>
 
@@ -267,7 +268,7 @@
         </property>
       </activation>
       <modules>
-        <module>bootstrap</module>
+        <module>repository-data</module>
         <module>cms</module>
         <module>site</module>
         <module>essentials</module>
@@ -298,6 +299,12 @@
                     <tofile>logging.properties</tofile>
                   </configfile>
                 </configfiles>
+                <files>
+                  <file>
+                    <file>${project.basedir}/repository-data/development/target/taxonomy-bulkwf-demo-repository-data-development-${project.version}.jar</file>
+                    <todir>${development-module-deploy-dir}</todir>
+                  </file>
+                </files>
               </configuration>
               <deployables>
                 <deployable>
@@ -325,7 +332,7 @@
               <container>
                 <systemProperties>
                   <derby.stream.error.file>${project.basedir}/target/derby.log</derby.stream.error.file>
-                  <log4j.configuration>file:${project.basedir}/conf/log4j-dev.xml</log4j.configuration>
+                  <log4j.configurationFile>file://${project.basedir}/conf/log4j2-dev.xml</log4j.configurationFile>
                   <rebel.log4j-plugin>true</rebel.log4j-plugin>
                   <!-- enables auto export and web files watch: -->
                   <project.basedir>${project.basedir}</project.basedir>
@@ -342,8 +349,8 @@
       <id>dist</id>
       <dependencies>
         <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-log4j12</artifactId>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-slf4j-impl</artifactId>
           <scope>provided</scope>
         </dependency>
         <dependency>
@@ -352,8 +359,13 @@
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
           <scope>provided</scope>
         </dependency>
       </dependencies>

@@ -19,6 +19,9 @@ import org.onehippo.forge.search.workflow.taxonomy.frontend.dialog.report.Report
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Created by charliechen on July 6, 2018.
+ */
 public class ReportStep extends ButtonBarStep {
 
     static final Logger log = LoggerFactory.getLogger(ReportStep.class);

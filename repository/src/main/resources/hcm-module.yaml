@@ -1,0 +1,5 @@
+group:
+  name: hippo-forge
+  after: hippo-cms
+project: taxonomy-bulkwf
+module: taxonomy-bulkwf-repository
