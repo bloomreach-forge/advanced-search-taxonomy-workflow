@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/onehippo-forge/advanced-search-taxonomy-workflow?branch=develop)](https://travis-ci.org/onehippo-forge/advanced-search-taxonomy-workflow)
-
 # Advanced Search Taxonomy Workflow Plugin
 
 The Advanced Search Taxonomy Workflow plugin provides CMS users an ability to simultaneously set multiple documents with 
