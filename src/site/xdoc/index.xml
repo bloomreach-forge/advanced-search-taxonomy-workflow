@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE document PUBLIC "-//Apache Software Foundation//DTD XDOC 1.0//EN" "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
-    Copyright 2009-2015 Hippo
+    Copyright 2009-2018 Hippo
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@
         <p>The CMS administrator can configure the taxonomy name to populate categories.</p>
       </div>
       <subsection name="Code base on GitHub">
-        <p>The code of this project is on GitHub at <a href="https://github.com/onehippo-forge/advanced-search-taxonomy-workflow/">https://github.com/onehippo-forge/advanced-search-taxonomy-workflow/</a>.</p>
+        <p>The code of this project is on GitHub at <a href="https://github.com/bloomreach-forge/advanced-search-taxonomy-workflow/">https://github.com/bloomreach-forge/advanced-search-taxonomy-workflow/</a>.</p>
       </subsection>
       <subsection name="Install instructions">
         <p>
