@@ -18,7 +18,7 @@ The output is in the target/site/ directory by default. You can open target/site
 
 # Documentation (GitHub Pages)
 
-Documentation is available at [https://onehippo-forge.github.io/advanced-search-taxonomy-workflow/](https://onehippo-forge.github.io/advanced-search-taxonomy-workflow/)
+Documentation is available at [https://bloomreach-forge.github.io/advanced-search-taxonomy-workflow/](https://bloomreach-forge.github.io/advanced-search-taxonomy-workflow/)
 
 You can generate the GitHub pages only from master branch by this command:
 
