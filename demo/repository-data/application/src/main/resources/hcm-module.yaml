@@ -1,6 +1,6 @@
 group:
-  name: taxonomy-bulkwf-demo
+  name: myproject
   after: hippo-cms
-project: taxonomy-bulkwf-demo
+project: myproject
 module:
-  name: taxonomy-bulkwf-demo-repository-data-application
+  name: myproject-repository-data-application

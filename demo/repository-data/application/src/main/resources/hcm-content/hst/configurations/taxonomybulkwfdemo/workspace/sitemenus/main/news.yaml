@@ -1,4 +1,0 @@
-/hst:hst/hst:configurations/taxonomybulkwfdemo/hst:workspace/hst:sitemenus/main/news:
-  .meta:order-before: events
-  jcr:primaryType: hst:sitemenuitem
-  hst:referencesitemapitem: news

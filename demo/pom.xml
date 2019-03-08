@@ -5,14 +5,14 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>12.4.0</version>
+    <version>13.0.0-1</version>
   </parent>
 
   <name>Advanced Search Taxonomy Workflow Plugin Demo</name>
   <description>Advanced Search Taxonomy Workflow Plugin Demo</description>
-  <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
-  <artifactId>taxonomy-bulkwf-demo</artifactId>
-  <version>3.0.1-SNAPSHOT</version>
+  <groupId>org.example</groupId>
+  <artifactId>myproject</artifactId>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <!-- 
@@ -22,6 +22,7 @@
     DO NOT remove these tags but instead fill them in appropriately as needed, 
     UNLESS the inherited values are valid for your project.
   -->
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -51,55 +52,37 @@
     <!--***START temporary override of versions*** -->
     <!-- ***END temporary override of versions*** -->
 
-    <forge.taxonomy-bulkwf.version>3.0.0-SNAPSHOT</forge.taxonomy-bulkwf.version>
-    <essentials.version>4.4.0-1</essentials.version>
+    <essentials.version>13.0.0</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.5</taglibs.version>
-    <xalan.version>2.7.2</xalan.version>
-    <junit.version>4.12</junit.version>
-    <easymock.version>3.4</easymock.version>
-     
-    <filesync.override>false</filesync.override>
-    <maven.plugins.filesync.version>1.0.0</maven.plugins.filesync.version>
-    <repo.bootstrap>true</repo.bootstrap>
 
-    <!-- other properties -->
+    <forge.taxonomy-bulkwf.version>4.0.0-SNAPSHOT</forge.taxonomy-bulkwf.version>
+
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
-    <hippo.cms.locales>nl,fr,de</hippo.cms.locales>
+
+    <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>
+    <buildNumber>${maven.build.timestamp}</buildNumber>
   </properties>
 
   <repositories>
     <repository>
-      <id>hippo-maven2</id>
-      <name>Hippo Maven 2 repository.</name>
+      <id>hippo</id>
+      <name>Hippo maven 2 repository.</name>
       <url>https://maven.onehippo.com/maven2/</url>
     </repository>
     <repository>
-      <id>hippo-maven2-forge</id>
-      <name>Hippo Maven 2 Forge repository.</name>
-      <url>https://maven.onehippo.com/maven2-forge/</url>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <id>hippo-maven2-enterprise</id>
+      <name>Hippo Enterprise Maven 2</name>
+      <url>https://maven.onehippo.com/maven2-enterprise</url>
     </repository>
   </repositories>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
-        <artifactId>taxonomy-bulkwf-frontend</artifactId>
-        <version>${forge.taxonomy-bulkwf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
-        <artifactId>taxonomy-bulkwf-repository</artifactId>
-        <version>${forge.taxonomy-bulkwf.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.onehippo.cms7</groupId>
-        <artifactId>hippo-essentials-plugin-sdk-api</artifactId>
-        <version>${essentials.version}</version>
-      </dependency>
-
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
@@ -122,19 +105,6 @@
         <scope>runtime</scope>
       </dependency>
 
-      <dependency>
-        <groupId>xalan</groupId>
-        <artifactId>xalan</artifactId>
-        <version>${xalan.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <dependency>
-        <groupId>xalan</groupId>
-        <artifactId>serializer</artifactId>
-        <version>${xalan.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-
       <!-- other predefined compile scope versioned dependencies -->
       <dependency>
         <groupId>org.freemarker</groupId>
@@ -143,17 +113,14 @@
       </dependency>
 
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit.version}</version>
-        <scope>test</scope>
+        <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
+        <artifactId>taxonomy-bulkwf-frontend</artifactId>
+        <version>${forge.taxonomy-bulkwf.version}</version>
       </dependency>
-
       <dependency>
-        <groupId>org.easymock</groupId>
-        <artifactId>easymock</artifactId>
-        <version>${easymock.version}</version>
-        <scope>test</scope>
+        <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
+        <artifactId>taxonomy-bulkwf-repository</artifactId>
+        <version>${forge.taxonomy-bulkwf.version}</version>
       </dependency>
 
     </dependencies>
@@ -175,19 +142,6 @@
               <pluginExecutions>
                 <pluginExecution>
                   <pluginExecutionFilter>
-                    <groupId>com.googlecode.mavenfilesync</groupId>
-                    <artifactId>maven-filesync-plugin</artifactId>
-                    <versionRange>[1.0.0,)</versionRange>
-                    <goals>
-                      <goal>generate</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore/>
-                  </action>
-                </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <goals>
@@ -196,53 +150,19 @@
                     <versionRange>[0.0,)</versionRange>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore/>
+                    <ignore />
                   </action>
                 </pluginExecution>
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>com.googlecode.mavenfilesync</groupId>
-          <artifactId>maven-filesync-plugin</artifactId>
-          <version>${maven.plugins.filesync.version}</version>
-          <configuration>
-            <override>${filesync.override}</override>
-          </configuration>
-          <executions>
-            <execution>
-              <goals>
-                <goal>generate</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <version>${maven.plugin.buildnumber.version}</version>
-        <executions>
-          <execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>create</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <doCheck>false</doCheck>
-          <doUpdate>false</doUpdate>
-          <revisionOnScmFailure>-1</revisionOnScmFailure>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>${maven.plugin.jar.version}</version>
         <configuration>
           <archive>
             <manifest>
@@ -268,6 +188,7 @@
         </property>
       </activation>
       <modules>
+        <module>cms-dependencies</module>
         <module>repository-data</module>
         <module>cms</module>
         <module>site</module>
@@ -284,9 +205,6 @@
             <artifactId>cargo-maven2-plugin</artifactId>
             <configuration>
               <configuration>
-                <properties>
-                  <catalina.servlet.uriencoding>UTF-8</catalina.servlet.uriencoding>
-                </properties>
                 <configfiles>
                   <configfile>
                     <file>${project.basedir}/conf/context.xml</file>
@@ -301,7 +219,7 @@
                 </configfiles>
                 <files>
                   <file>
-                    <file>${project.basedir}/repository-data/development/target/taxonomy-bulkwf-demo-repository-data-development-${project.version}.jar</file>
+                    <file>${project.basedir}/repository-data/development/target/myproject-repository-data-development-${project.version}.jar</file>
                     <todir>${development-module-deploy-dir}</todir>
                   </file>
                 </files>
@@ -315,7 +233,7 @@
                   <location>${project.basedir}/cms/target/cms.war</location>
                 </deployable>
                 <deployable>
-                  <location>${project.basedir}/site/target/site.war</location>
+                  <location>${project.basedir}/site/webapp/target/site.war</location>
                   <type>war</type>
                   <properties>
                     <context>/site</context>
@@ -331,9 +249,7 @@
               </deployables>
               <container>
                 <systemProperties>
-                  <derby.stream.error.file>${project.basedir}/target/derby.log</derby.stream.error.file>
                   <log4j.configurationFile>file://${project.basedir}/conf/log4j2-dev.xml</log4j.configurationFile>
-                  <rebel.log4j-plugin>true</rebel.log4j-plugin>
                   <!-- enables auto export and web files watch: -->
                   <project.basedir>${project.basedir}</project.basedir>
                   <send.usage.statistics.to.hippo>true</send.usage.statistics.to.hippo>
@@ -343,6 +259,15 @@
           </plugin>
         </plugins>
       </build>
+    </profile>
+
+    <profile>
+      <!-- additional profile to combine with cargo:run to *not* bootstrap the development module:
+           $ mvn -P cargo.run,without-development-data -->
+      <id>without-development-data</id>
+      <properties>
+        <development-module-deploy-dir>temp</development-module-deploy-dir>
+      </properties>
     </profile>
 
     <profile>
@@ -384,6 +309,54 @@
                 <configuration>
                   <descriptors>
                     <descriptor>${project.basedir}/src/main/assembly/distribution.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>dist-with-development-data</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-slf4j-impl</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <defaultGoal>validate</defaultGoal>
+        <plugins>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>distro-assembly-with-development-data</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <descriptors>
+                    <descriptor>${project.basedir}/src/main/assembly/distribution-with-development-data.xml</descriptor>
                   </descriptors>
                 </configuration>
               </execution>

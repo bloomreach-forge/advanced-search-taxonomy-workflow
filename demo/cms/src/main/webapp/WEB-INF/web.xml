@@ -6,8 +6,12 @@
          id="cms">
 
   <!-- General configuration -->
-  <display-name>Advanced Search Taxonomy Workflow Plugin Demo CMS</display-name>
-  <description>Advanced Search Taxonomy Workflow Plugin Demo CMS</description>
+  <display-name>My Project CMS</display-name>
+  <description>My Project CMS</description>
+
+  <listener>
+    <listener-class>org.hippoecm.hst.platform.container.HstCmsContextLoaderListener</listener-class>
+  </listener>
 
   <context-param>
     <description>The address of the repository</description>
@@ -27,6 +31,16 @@
     <param-name>repository-config</param-name>
     <param-value>repository.xml</param-value>
   </context-param>
+
+  <filter>
+    <filter-name>HstFilter</filter-name>
+    <filter-class>org.hippoecm.hst.container.HstFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>HstFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!--No concurrent logins-->
   <filter>
@@ -118,14 +132,6 @@
         ^/.*\..*
       </param-value>
     </init-param>
-    <init-param>
-      <!--
-        Cache timeout in seconds. Make sure to increase it in production environments,
-        for example to one day (cacheTimeout = 86400)
-      -->
-      <param-name>cacheTimeout</param-name>
-      <param-value>0</param-value>
-    </init-param>
   </servlet>
 
   <servlet>
@@ -141,14 +147,6 @@
         ^/.*\..*
       </param-value>
     </init-param>
-    <init-param>
-      <!--
-        Cache timeout in seconds. Make sure to increase it in production environments,
-        for example to one day (cacheTimeout = 86400)
-      -->
-      <param-name>cacheTimeout</param-name>
-      <param-value>0</param-value>
-    </init-param>
   </servlet>
 
   <servlet>
@@ -163,14 +161,6 @@
       <param-value>
         ^/.*\..*
       </param-value>
-    </init-param>
-    <init-param>
-      <!--
-        Cache timeout in seconds. Make sure to increase it in production environments,
-        for example to one day (cacheTimeout = 86400)
-      -->
-      <param-name>cacheTimeout</param-name>
-      <param-value>0</param-value>
     </init-param>
   </servlet>
 
