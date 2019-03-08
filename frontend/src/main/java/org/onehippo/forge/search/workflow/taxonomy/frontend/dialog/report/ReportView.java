@@ -33,7 +33,6 @@ import org.hippoecm.frontend.plugins.standards.list.resolvers.StateIconAttribute
 import org.hippoecm.frontend.service.IBrowseService;
 import org.hippoecm.frontend.skin.DocumentListColumn;
 import org.hippoecm.frontend.util.DocumentUtils;
-import org.onehippo.forge.search.workflow.taxonomy.frontend.dialog.ReportStep;
 
 /**
  * Created by charliechen on July 6, 2018.
@@ -74,7 +73,9 @@ public class ReportView extends Panel {
                     protected String load() {
                         final Report report = reportModel.getObject();
                         final String resourceKey = report.getAction() + resourceKeySuffix;
-                        return new StringResourceModel(resourceKey, ReportView.this, null, new Object[]{report.getSucceeded()}).getString();
+                        return new StringResourceModel(resourceKey, ReportView.this)
+                                .setParameters(report.getSucceeded())
+                                .getString();
                     }
                 });
     }

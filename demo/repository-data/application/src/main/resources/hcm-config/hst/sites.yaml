@@ -1,7 +1,0 @@
-definitions:
-  config:
-    /hst:hst/hst:sites:
-      jcr:primaryType: hst:sites
-      /taxonomybulkwfdemo:
-        jcr:primaryType: hst:site
-        hst:content: /content/documents/taxonomybulkwfdemo

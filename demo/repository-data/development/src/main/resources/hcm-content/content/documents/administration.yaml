@@ -1,6 +1,0 @@
-/content/documents/administration:
-  .meta:order-before: taxonomybulkwfdemo
-  jcr:primaryType: hippostd:folder
-  jcr:mixinTypes: ['mix:referenceable']
-  jcr:uuid: 4c7e0b11-47b2-49ca-ba7e-eb0ebc19e4f3
-  hippostd:foldertype: [new-resource-bundle, new-untranslated-folder]

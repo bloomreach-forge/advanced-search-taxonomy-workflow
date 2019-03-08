@@ -1,0 +1,113 @@
+/content/taxonomies:
+  jcr:primaryType: hippotaxonomy:container
+  /priority:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:versionInfo']
+    hippo:versionHistory: 1280a375-b676-4989-9c32-38c7a840f25e
+    /priority[1]:
+      jcr:primaryType: hippotaxonomy:taxonomy
+      jcr:mixinTypes: ['hippostd:publishableSummary', 'mix:versionable']
+      jcr:uuid: 80da49ee-8c69-4b92-a7ab-0715507d2c5b
+      hippo:availability: [live]
+      hippostd:holder: admin
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-03-08T12:33:09.040-05:00
+      hippostdpubwf:lastModificationDate: 2019-03-08T12:36:02.404-05:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-03-08T12:36:04.320-05:00
+      hippotaxonomy:locales: [en]
+      /high:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: high
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: High
+      /medium:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: medium
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Medium
+      /low:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: low
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Low
+    /priority[2]:
+      jcr:primaryType: hippotaxonomy:taxonomy
+      jcr:mixinTypes: ['hippostd:publishableSummary', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 50df6842-235d-4a72-895d-085825fbaacc
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-03-08T12:33:09.040-05:00
+      hippostdpubwf:lastModificationDate: 2019-03-08T12:36:02.404-05:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotaxonomy:locales: [en]
+      /high:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: high
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: High
+      /medium:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: medium
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Medium
+      /low:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: low
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Low
+    /priority[3]:
+      jcr:primaryType: hippotaxonomy:taxonomy
+      jcr:mixinTypes: ['hippostd:publishableSummary', 'mix:referenceable']
+      jcr:uuid: 6260414c-1854-42db-a854-de54d45bcea4
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-03-08T12:33:09.040-05:00
+      hippostdpubwf:lastModificationDate: 2019-03-08T12:35:36.255-05:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotaxonomy:locales: [en]
+      /high:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: high
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: High
+      /medium:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: medium
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Medium
+      /low:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: low
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Low

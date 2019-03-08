@@ -3,22 +3,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
-    <artifactId>taxonomy-bulkwf-demo-repository-data</artifactId>
-    <version>3.0.0</version>
+    <groupId>org.example</groupId>
+    <artifactId>myproject-repository-data</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
   </parent>
 
-  <name>Advanced Search Taxonomy Workflow Plugin Demo Repository Data for Development</name>
-  <description>Advanced Search Taxonomy Workflow Plugin Demo Repository Data for Development</description>
-  <artifactId>taxonomy-bulkwf-demo-repository-data-development</artifactId>
+  <name>My Project Repository Data For Development</name>
+  <description>My Project Repository Data For Development</description>
+  <artifactId>myproject-repository-data-development</artifactId>
 
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>

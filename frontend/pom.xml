@@ -6,7 +6,7 @@
   <parent>
     <artifactId>taxonomy-bulkwf</artifactId>
     <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
   </parent>
 
 

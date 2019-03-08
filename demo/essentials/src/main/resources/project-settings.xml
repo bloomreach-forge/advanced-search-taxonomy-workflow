@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project>
-    <name>project-settings</name>
-    <beansFolder>site/src/main/java</beansFolder>
-    <bootstrapModule>bootstrap</bootstrapModule>
+    <applicationSubModule>application</applicationSubModule>
+    <cmsDependenciesModule>cms-dependencies</cmsDependenciesModule>
     <cmsModule>cms</cmsModule>
     <confirmParams>false</confirmParams>
+    <developmentSubModule>development</developmentSubModule>
+    <enterprise>true</enterprise>
     <extraTemplates>true</extraTemplates>
-    <projectNamespace>taxonomybulkwfdemo</projectNamespace>
-    <selectedBeansPackage>org.onehippo.forge.search.workflow.taxonomy.demo.beans</selectedBeansPackage>
-    <selectedComponentsPackage>org.onehippo.forge.search.workflow.taxonomy.demo.components</selectedComponentsPackage>
-    <selectedRestPackage>org.onehippo.forge.search.workflow.taxonomy.demo.rest</selectedRestPackage>
+    <hstRoot>/hst:myproject</hstRoot>
+    <projectNamespace>myproject</projectNamespace>
+    <repositoryDataModule>repository-data</repositoryDataModule>
+    <selectedBeansPackage>org.example.beans</selectedBeansPackage>
+    <selectedComponentsPackage>org.example.components</selectedComponentsPackage>
+    <selectedProjectPackage>org.example</selectedProjectPackage>
+    <selectedRestPackage>org.example.rest</selectedRestPackage>
     <setupDone>true</setupDone>
+    <siteContextPath>/site</siteContextPath>
     <siteModule>site</siteModule>
-    <templateLanguage>freemarker</templateLanguage>
     <useSamples>true</useSamples>
+    <webfileBundleName>site</webfileBundleName>
     <webfilesSubModule>webfiles</webfilesSubModule>
-    <selectedProjectPackage>org.onehippo.forge.search.workflow.taxonomy.demo</selectedProjectPackage>
 </project>

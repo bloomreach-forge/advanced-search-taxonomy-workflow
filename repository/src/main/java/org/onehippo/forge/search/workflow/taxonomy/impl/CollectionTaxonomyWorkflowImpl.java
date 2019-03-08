@@ -16,6 +16,7 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import org.hippoecm.frontend.model.JcrNodeModel;
 import org.hippoecm.repository.api.Document;
 import org.hippoecm.repository.api.Workflow;
 import org.hippoecm.repository.api.WorkflowContext;
@@ -119,7 +120,7 @@ public class CollectionTaxonomyWorkflowImpl extends WorkflowImpl
             final Node editableNode = document.getNode(session);
 
             if (dao != null) {
-                Classification classification = dao.getClassification(editableNode);
+                Classification classification = dao.getClassification(new JcrNodeModel(editableNode));
                 classification.getKeys().clear();
                 classification.getKeys().addAll(keys);
                 dao.save(classification);
