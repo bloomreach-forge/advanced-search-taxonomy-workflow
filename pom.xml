@@ -18,14 +18,14 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>29.4</version>
+    <version>30.0</version>
   </parent>
 
   <name>Advanced Search Taxonomy Workflow Plugin</name>
   <description>Advanced Search Taxonomy Workflow Plugin</description>
   <groupId>org.onehippo.forge.taxonomy-bulkwf</groupId>
   <artifactId>taxonomy-bulkwf</artifactId>
-  <version>3.0.1-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/bloomreach-forge/advanced-search-taxonomy-workflow/</url>
 
@@ -34,11 +34,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.javaVersion>1.8</project.build.javaVersion>
 
-    <!-- Hippo CMS 12.4.0 versioning -->
-    <hippo.repository.version>5.4.0</hippo.repository.version>
-    <hippo.cms.version>5.4.0</hippo.cms.version>
-    <hippo.plugin.taxonomy.version>4.4.0</hippo.plugin.taxonomy.version>
-    <hippo.addon-advanced-search.version>4.4.0</hippo.addon-advanced-search.version>
+    <!-- Hippo CMS 13.0.0 versioning -->
+    <hippo.repository.version>13.0.0</hippo.repository.version>
+    <hippo.cms.version>13.0.0</hippo.cms.version>
+    <hippo.plugin.taxonomy.version>13.0.0</hippo.plugin.taxonomy.version>
+    <hippo.addon-advanced-search.version>13.0.0</hippo.addon-advanced-search.version>
 
     <junit.version>4.12</junit.version>
     <easymock.version>3.5.1</easymock.version>

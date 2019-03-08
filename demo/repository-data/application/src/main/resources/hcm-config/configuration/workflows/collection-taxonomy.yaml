@@ -1,9 +1,4 @@
 definitions:
   config:
-    /hippo:configuration/hippo:workflows/collection-taxonomy:
-      /collections:
-        /frontend:renderer:
-          taxonomy.name:
-            operation: override
-            type: string
-            value: Priority
+    /hippo:configuration/hippo:workflows/collection-taxonomy/collections/frontend:renderer:
+      taxonomy.name: priority
